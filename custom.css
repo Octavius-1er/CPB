@@ -1,0 +1,333 @@
+/* ═══ Collège Bobée · custom.css ═══════════════════════════════════
+   Améliorations visuelles injectées sur le site Drupal existant.
+   Ne pas modifier la structure HTML — uniquement du CSS/JS par-dessus.
+══════════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --g:      #3e5f46;
+  --gd:     #2d4535;
+  --deeper: #1e3025;
+  --gl:     #e8f0eb;
+  --gx:     #f4f8f5;
+  --gold:   #c59b32;
+  --border: #d0ddd4;
+  --r:      10px;
+  --r-lg:   16px;
+  --sh-sm:  0 2px 10px rgba(30,48,37,.07);
+  --sh:     0 6px 28px rgba(30,48,37,.12);
+  --ease:   cubic-bezier(.4,0,.2,1);
+  --dur:    .25s;
+}
+
+/* ── BASE ──────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', Roboto, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Bricolage Grotesque', Rubik, sans-serif !important;
+  letter-spacing: -.01em;
+}
+
+a { transition: color var(--dur) var(--ease), opacity var(--dur); }
+
+img { border-radius: var(--r); }
+
+/* ── HEADER STICKY ─────────────────────────────────────────────── */
+#header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 500 !important;
+  background: white !important;
+  box-shadow: var(--sh-sm) !important;
+  transition: box-shadow var(--dur) var(--ease) !important;
+}
+#header.scrolled { box-shadow: var(--sh) !important; }
+
+/* ── LOGO ───────────────────────────────────────────────────────── */
+.site-branding__logo img {
+  border-radius: 0 !important;
+  transition: transform var(--dur) var(--ease);
+}
+.site-branding__logo:hover img { transform: scale(1.04); }
+
+/* ── NAVIGATION ─────────────────────────────────────────────────── */
+nav#block-menubobee ul.menu {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+nav#block-menubobee ul.menu > .menu-item > span,
+nav#block-menubobee ul.menu > .menu-item > a {
+  display: block;
+  padding: 8px 14px !important;
+  border-radius: 8px !important;
+  font-size: .875rem !important;
+  font-weight: 500 !important;
+  color: var(--deeper) !important;
+  cursor: pointer;
+  transition: background var(--dur), color var(--dur);
+}
+nav#block-menubobee ul.menu > .menu-item:hover > span,
+nav#block-menubobee ul.menu > .menu-item:hover > a {
+  background: var(--gl) !important;
+  color: var(--gd) !important;
+}
+
+/* Sous-menus */
+nav#block-menubobee ul.menu > .menu-item--expanded { position: relative; }
+
+nav#block-menubobee ul.menu > .menu-item--expanded > ul.menu {
+  position: absolute !important;
+  top: calc(100% + 6px) !important;
+  left: 0 !important;
+  min-width: 220px !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  background: white !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  box-shadow: var(--sh) !important;
+  padding: 8px !important;
+  z-index: 300 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-8px) scale(.97) !important;
+  transform-origin: top left !important;
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease) !important;
+  display: flex !important;
+}
+nav#block-menubobee ul.menu > .menu-item--expanded:hover > ul.menu {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateY(0) scale(1) !important;
+}
+nav#block-menubobee .menu-item--expanded > ul.menu .menu-item a {
+  display: block !important;
+  padding: 9px 13px !important;
+  border-radius: 8px !important;
+  font-size: .84rem !important;
+  color: var(--deeper) !important;
+  transition: background var(--dur), padding-left var(--dur);
+}
+nav#block-menubobee .menu-item--expanded > ul.menu .menu-item a:hover {
+  background: var(--gl) !important;
+  color: var(--gd) !important;
+  padding-left: 18px !important;
+}
+
+/* ── BOUTON NAVIGATION MOBILE ───────────────────────────────────── */
+a.btn_navigation {
+  background: var(--g) !important;
+  color: white !important;
+  padding: 10px 20px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: .875rem !important;
+  transition: background var(--dur), transform var(--dur) !important;
+  display: inline-block !important;
+}
+a.btn_navigation:hover {
+  background: var(--gd) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ── PRÉ-INSCRIPTION ────────────────────────────────────────────── */
+#ensemble_preinscription a {
+  display: inline-block !important;
+  background: var(--gold) !important;
+  color: white !important;
+  padding: 9px 20px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: .85rem !important;
+  transition: background var(--dur), transform var(--dur) !important;
+}
+#ensemble_preinscription a:hover {
+  background: #a8841f !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ── SLIDER BANDEAU ─────────────────────────────────────────────── */
+#flexslider-1.flexslider {
+  border-radius: var(--r-lg) !important;
+  overflow: hidden !important;
+  border: none !important;
+  box-shadow: var(--sh) !important;
+  margin-bottom: 28px !important;
+}
+#flexslider-1 img { border-radius: 0 !important; }
+
+.flex-direction-nav a {
+  border-radius: 50% !important;
+  background: rgba(255,255,255,.18) !important;
+  backdrop-filter: blur(4px) !important;
+  transition: background var(--dur) !important;
+}
+.flex-direction-nav a:hover { background: rgba(255,255,255,.35) !important; }
+
+/* ── TITRES DES BLOCS ───────────────────────────────────────────── */
+h1.page-title {
+  color: var(--deeper) !important;
+  font-size: clamp(1.6rem,3vw,2.2rem) !important;
+  margin-bottom: 20px !important;
+}
+
+#block-views-block-vue-actualite-block-1 h2,
+#block-views-block-vue-article-presse-block-1 h2,
+#block-views-block-vue-agenda-block-1 h2,
+#block-views-block-vue-document-block-1 h2 {
+  font-size: 1.2rem !important;
+  color: var(--gd) !important;
+  padding-bottom: 10px !important;
+  border-bottom: 2px solid var(--gl) !important;
+  margin-bottom: 18px !important;
+}
+
+/* ── CARDS ACTUALITÉS / PRESSE ──────────────────────────────────── */
+.view-vue-actualite .views-row,
+.view-vue-article-presse .views-row {
+  border-radius: var(--r-lg) !important;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  padding: 14px !important;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease) !important;
+  margin-bottom: 16px !important;
+}
+.view-vue-actualite .views-row:hover,
+.view-vue-article-presse .views-row:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--sh) !important;
+}
+.view-vue-actualite .views-row img,
+.view-vue-article-presse .views-row img {
+  border-radius: var(--r) !important;
+  transition: transform .4s var(--ease);
+}
+.view-vue-actualite .views-row:hover img,
+.view-vue-article-presse .views-row:hover img {
+  transform: scale(1.04);
+}
+
+/* Lien "En savoir plus / Voir l'article" */
+.views-field-view-node a {
+  display: inline-block;
+  color: var(--g) !important;
+  font-weight: 600 !important;
+  font-size: .84rem !important;
+  transition: color var(--dur), gap var(--dur) !important;
+}
+.views-field-view-node a:hover { color: var(--gd) !important; }
+
+/* ── AGENDA / DOCUMENTS ─────────────────────────────────────────── */
+.sidebar .block {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg) !important;
+  padding: 18px !important;
+  margin-bottom: 16px !important;
+  transition: box-shadow var(--dur);
+}
+.sidebar .block:hover { box-shadow: var(--sh-sm); }
+
+/* ── LIENS UTILES ───────────────────────────────────────────────── */
+.view-vue-lien-utile .views-row {
+  display: inline-block;
+  margin: 4px !important;
+  border-radius: var(--r) !important;
+  overflow: hidden;
+  transition: transform var(--dur), box-shadow var(--dur) !important;
+}
+.view-vue-lien-utile .views-row:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--sh) !important;
+}
+.view-vue-lien-utile img { border-radius: var(--r) !important; }
+
+/* ── VIEW FOOTER LINKS ──────────────────────────────────────────── */
+.view-footer a {
+  display: inline-block;
+  color: var(--g) !important;
+  font-weight: 600 !important;
+  padding: 8px 18px !important;
+  border: 1.5px solid var(--g) !important;
+  border-radius: 8px !important;
+  margin-top: 10px !important;
+  transition: background var(--dur), color var(--dur) !important;
+}
+.view-footer a:hover {
+  background: var(--g) !important;
+  color: white !important;
+}
+
+/* ── BANDEAU FEATURED-BOTTOM ────────────────────────────────────── */
+.featured-bottom {
+  background: var(--gx);
+  border-top: 1px solid var(--border);
+  padding: 40px 0 !important;
+}
+
+.featured-bottom h2 {
+  font-size: 1.1rem !important;
+  color: var(--gd) !important;
+  margin-bottom: 14px !important;
+}
+
+/* ── SLIDER BAS DE PAGE ─────────────────────────────────────────── */
+#10.flexslider {
+  border-radius: var(--r-lg) !important;
+  overflow: hidden !important;
+  border: none !important;
+  box-shadow: var(--sh) !important;
+}
+
+/* ── COORDONNÉES ────────────────────────────────────────────────── */
+#block-coordonnees {
+  background: white;
+  border-radius: var(--r-lg) !important;
+  border: 1px solid var(--border);
+  padding: 22px !important;
+}
+
+/* ── FOOTER ─────────────────────────────────────────────────────── */
+.site-footer {
+  background: var(--deeper) !important;
+  padding: 28px 0 !important;
+}
+.site-footer p,
+.site-footer a {
+  color: rgba(255,255,255,.6) !important;
+  font-size: .82rem !important;
+  transition: color var(--dur) !important;
+}
+.site-footer a:hover { color: white !important; }
+
+/* ── COOKIE BANNER ──────────────────────────────────────────────── */
+div#sliding-popup {
+  border-radius: var(--r-lg) var(--r-lg) 0 0 !important;
+}
+.eu-cookie-compliance-default-button {
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: opacity var(--dur) !important;
+}
+
+/* ── SCROLL REVEAL (ajouté via JS) ─────────────────────────────── */
+.cpb-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .6s var(--ease), transform .6s var(--ease);
+}
+.cpb-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
