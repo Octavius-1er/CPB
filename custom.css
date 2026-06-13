@@ -80,6 +80,11 @@ a { transition: color var(--dur) var(--ease); }
   flex-wrap: nowrap !important;
 }
 
+#block-menubobee {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
 /* ── LOGO ───────────────────────────────────────────────────────── */
 #block-bobee-branding {
   flex-shrink: 0 !important;
@@ -109,9 +114,12 @@ a { transition: color var(--dur) var(--ease); }
 
 #block-boutonpouraffichernavigation { display: none; } /* masqué desktop */
 
-nav#block-menubobee .content,
 nav#block-menubobee .menu-toggle-target,
 nav#block-menubobee .menu-toggle { display: none !important; }
+
+nav#block-menubobee .content {
+  display: block !important;
+}
 
 nav#block-menubobee ul.menu {
   display: flex !important;
@@ -191,7 +199,8 @@ nav#block-menubobee .menu-item--expanded > ul.menu .menu-item a:hover {
 #ensemble_preinscription,
 .cpb-header-cta {
   flex-shrink: 0 !important;
-  margin-left: auto !important;
+  display: flex !important;
+  align-items: center !important;
 }
 .cpb-preinscription-btn,
 #ensemble_preinscription a {
