@@ -1,6 +1,5 @@
 /* ═══ Collège Bobée · custom.css ═══════════════════════════════════
    Améliorations visuelles injectées sur le site Drupal existant.
-   Ne pas modifier la structure HTML — uniquement du CSS/JS par-dessus.
 ══════════════════════════════════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600&display=swap');
@@ -34,9 +33,7 @@ h1,h2,h3,h4,h5,h6 {
   letter-spacing: -.01em;
 }
 
-a { transition: color var(--dur) var(--ease), opacity var(--dur); }
-
-img { border-radius: var(--r); }
+a { transition: color var(--dur) var(--ease); }
 
 /* ── HEADER STICKY ─────────────────────────────────────────────── */
 #header {
@@ -49,48 +46,112 @@ img { border-radius: var(--r); }
 }
 #header.scrolled { box-shadow: var(--sh) !important; }
 
-/* ── LOGO ───────────────────────────────────────────────────────── */
-.site-branding__logo img {
-  border-radius: 0 !important;
-  transition: transform var(--dur) var(--ease);
+/* ── LAYOUT HEADER ─────────────────────────────────────────────── */
+
+/* Barre contact (email + tél) → top bar discret */
+.region-secondary-menu {
+  background: var(--deeper) !important;
+  padding: 7px 20px !important;
 }
-.site-branding__logo:hover img { transform: scale(1.04); }
+
+#block-blocpourtelephoneetemail .field__item {
+  display: flex !important;
+  gap: 20px !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+}
+
+#ensemble_email p,
+#ensemble_telephone p {
+  font-size: .78rem !important;
+  color: rgba(255,255,255,.7) !important;
+  margin: 0 !important;
+}
+#ensemble_email a { color: rgba(255,255,255,.7) !important; }
+#ensemble_email a:hover { color: white !important; }
+.telephone { color: rgba(255,255,255,.85) !important; font-weight: 600 !important; }
+
+/* Barre nav principale → flex (logo | nav | CTA) */
+.region-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 6px 20px !important;
+  flex-wrap: nowrap !important;
+}
+
+/* ── LOGO ───────────────────────────────────────────────────────── */
+#block-bobee-branding {
+  flex-shrink: 0 !important;
+  line-height: 0 !important;
+}
+.site-branding__logo {
+  display: block !important;
+  line-height: 0 !important;
+}
+.site-branding__logo img {
+  max-height: 64px !important;
+  width: auto !important;
+  max-width: 180px !important;
+  height: auto !important;
+  object-fit: contain !important;
+  border-radius: 0 !important;
+  display: block !important;
+  transform: none !important;
+  transition: none !important;
+}
 
 /* ── NAVIGATION ─────────────────────────────────────────────────── */
+#block-menubobee {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+#block-boutonpouraffichernavigation { display: none; } /* masqué desktop */
+
+nav#block-menubobee .content,
+nav#block-menubobee .menu-toggle-target,
+nav#block-menubobee .menu-toggle { display: none !important; }
+
 nav#block-menubobee ul.menu {
-  display: flex;
-  gap: 2px;
-  flex-wrap: wrap;
+  display: flex !important;
+  gap: 2px !important;
+  flex-wrap: wrap !important;
   list-style: none !important;
   padding: 0 !important;
   margin: 0 !important;
 }
 
+/* Items principaux — contraste élevé */
 nav#block-menubobee ul.menu > .menu-item > span,
 nav#block-menubobee ul.menu > .menu-item > a {
-  display: block;
-  padding: 8px 14px !important;
+  display: block !important;
+  padding: 9px 15px !important;
   border-radius: 8px !important;
   font-size: .875rem !important;
-  font-weight: 500 !important;
-  color: var(--deeper) !important;
-  cursor: pointer;
-  transition: background var(--dur), color var(--dur);
+  font-weight: 600 !important;
+  color: #1a2a1e !important;        /* presque noir = contraste max */
+  cursor: pointer !important;
+  letter-spacing: .005em !important;
+  transition: background var(--dur), color var(--dur) !important;
+  white-space: nowrap !important;
 }
+
+/* Hover → fond vert foncé + texte blanc = contraste parfait */
 nav#block-menubobee ul.menu > .menu-item:hover > span,
 nav#block-menubobee ul.menu > .menu-item:hover > a {
-  background: var(--gl) !important;
-  color: var(--gd) !important;
+  background: var(--g) !important;
+  color: white !important;
 }
 
 /* Sous-menus */
-nav#block-menubobee ul.menu > .menu-item--expanded { position: relative; }
+nav#block-menubobee ul.menu > .menu-item--expanded { position: relative !important; }
 
 nav#block-menubobee ul.menu > .menu-item--expanded > ul.menu {
   position: absolute !important;
   top: calc(100% + 6px) !important;
   left: 0 !important;
-  min-width: 220px !important;
+  min-width: 230px !important;
   flex-direction: column !important;
   gap: 2px !important;
   background: white !important;
@@ -113,49 +174,47 @@ nav#block-menubobee ul.menu > .menu-item--expanded:hover > ul.menu {
 }
 nav#block-menubobee .menu-item--expanded > ul.menu .menu-item a {
   display: block !important;
-  padding: 9px 13px !important;
+  padding: 9px 14px !important;
   border-radius: 8px !important;
   font-size: .84rem !important;
-  color: var(--deeper) !important;
-  transition: background var(--dur), padding-left var(--dur);
+  font-weight: 500 !important;
+  color: #1a2a1e !important;
+  transition: background var(--dur), padding-left var(--dur), color var(--dur) !important;
 }
 nav#block-menubobee .menu-item--expanded > ul.menu .menu-item a:hover {
-  background: var(--gl) !important;
-  color: var(--gd) !important;
-  padding-left: 18px !important;
-}
-
-/* ── BOUTON NAVIGATION MOBILE ───────────────────────────────────── */
-a.btn_navigation {
   background: var(--g) !important;
   color: white !important;
-  padding: 10px 20px !important;
-  border-radius: 8px !important;
-  font-weight: 600 !important;
-  font-size: .875rem !important;
-  transition: background var(--dur), transform var(--dur) !important;
-  display: inline-block !important;
-}
-a.btn_navigation:hover {
-  background: var(--gd) !important;
-  transform: translateY(-2px) !important;
+  padding-left: 20px !important;
 }
 
-/* ── PRÉ-INSCRIPTION ────────────────────────────────────────────── */
+/* ── BOUTON PRÉ-INSCRIPTION (dans le header) ────────────────────── */
+#ensemble_preinscription,
+.cpb-header-cta {
+  flex-shrink: 0 !important;
+  margin-left: auto !important;
+}
+.cpb-preinscription-btn,
 #ensemble_preinscription a {
   display: inline-block !important;
   background: var(--gold) !important;
   color: white !important;
-  padding: 9px 20px !important;
-  border-radius: 8px !important;
-  font-weight: 600 !important;
-  font-size: .85rem !important;
-  transition: background var(--dur), transform var(--dur) !important;
+  padding: 10px 20px !important;
+  border-radius: 9px !important;
+  font-weight: 700 !important;
+  font-size: .84rem !important;
+  white-space: nowrap !important;
+  transition: background var(--dur), transform var(--dur), box-shadow var(--dur) !important;
+  letter-spacing: .01em !important;
 }
+.cpb-preinscription-btn:hover,
 #ensemble_preinscription a:hover {
   background: #a8841f !important;
+  color: white !important;
   transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(197,155,50,.35) !important;
 }
+/* On masque le p autour */
+#ensemble_preinscription p { margin: 0 !important; }
 
 /* ── SLIDER BANDEAU ─────────────────────────────────────────────── */
 #flexslider-1.flexslider {
@@ -173,9 +232,9 @@ a.btn_navigation:hover {
   backdrop-filter: blur(4px) !important;
   transition: background var(--dur) !important;
 }
-.flex-direction-nav a:hover { background: rgba(255,255,255,.35) !important; }
+.flex-direction-nav a:hover { background: rgba(255,255,255,.38) !important; }
 
-/* ── TITRES DES BLOCS ───────────────────────────────────────────── */
+/* ── TITRES BLOCS ────────────────────────────────────────────────── */
 h1.page-title {
   color: var(--deeper) !important;
   font-size: clamp(1.6rem,3vw,2.2rem) !important;
@@ -185,8 +244,9 @@ h1.page-title {
 #block-views-block-vue-actualite-block-1 h2,
 #block-views-block-vue-article-presse-block-1 h2,
 #block-views-block-vue-agenda-block-1 h2,
-#block-views-block-vue-document-block-1 h2 {
-  font-size: 1.2rem !important;
+#block-views-block-vue-document-block-1 h2,
+.featured-bottom h2 {
+  font-size: 1.1rem !important;
   color: var(--gd) !important;
   padding-bottom: 10px !important;
   border-bottom: 2px solid var(--gl) !important;
@@ -197,11 +257,11 @@ h1.page-title {
 .view-vue-actualite .views-row,
 .view-vue-article-presse .views-row {
   border-radius: var(--r-lg) !important;
-  border: 1px solid var(--border);
-  overflow: hidden;
+  border: 1px solid var(--border) !important;
+  overflow: hidden !important;
   padding: 14px !important;
-  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease) !important;
   margin-bottom: 16px !important;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease) !important;
 }
 .view-vue-actualite .views-row:hover,
 .view-vue-article-presse .views-row:hover {
@@ -211,51 +271,21 @@ h1.page-title {
 .view-vue-actualite .views-row img,
 .view-vue-article-presse .views-row img {
   border-radius: var(--r) !important;
-  transition: transform .4s var(--ease);
+  transition: transform .4s var(--ease) !important;
 }
 .view-vue-actualite .views-row:hover img,
-.view-vue-article-presse .views-row:hover img {
-  transform: scale(1.04);
-}
+.view-vue-article-presse .views-row:hover img { transform: scale(1.04) !important; }
 
-/* Lien "En savoir plus / Voir l'article" */
 .views-field-view-node a {
-  display: inline-block;
   color: var(--g) !important;
   font-weight: 600 !important;
   font-size: .84rem !important;
-  transition: color var(--dur), gap var(--dur) !important;
 }
 .views-field-view-node a:hover { color: var(--gd) !important; }
 
-/* ── AGENDA / DOCUMENTS ─────────────────────────────────────────── */
-.sidebar .block {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg) !important;
-  padding: 18px !important;
-  margin-bottom: 16px !important;
-  transition: box-shadow var(--dur);
-}
-.sidebar .block:hover { box-shadow: var(--sh-sm); }
-
-/* ── LIENS UTILES ───────────────────────────────────────────────── */
-.view-vue-lien-utile .views-row {
-  display: inline-block;
-  margin: 4px !important;
-  border-radius: var(--r) !important;
-  overflow: hidden;
-  transition: transform var(--dur), box-shadow var(--dur) !important;
-}
-.view-vue-lien-utile .views-row:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: var(--sh) !important;
-}
-.view-vue-lien-utile img { border-radius: var(--r) !important; }
-
 /* ── VIEW FOOTER LINKS ──────────────────────────────────────────── */
 .view-footer a {
-  display: inline-block;
+  display: inline-block !important;
   color: var(--g) !important;
   font-weight: 600 !important;
   padding: 8px 18px !important;
@@ -264,50 +294,47 @@ h1.page-title {
   margin-top: 10px !important;
   transition: background var(--dur), color var(--dur) !important;
 }
-.view-footer a:hover {
-  background: var(--g) !important;
-  color: white !important;
-}
+.view-footer a:hover { background: var(--g) !important; color: white !important; }
 
-/* ── BANDEAU FEATURED-BOTTOM ────────────────────────────────────── */
+/* ── SIDEBAR ────────────────────────────────────────────────────── */
+.sidebar .block {
+  background: white !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  padding: 18px !important;
+  margin-bottom: 16px !important;
+  transition: box-shadow var(--dur) !important;
+}
+.sidebar .block:hover { box-shadow: var(--sh-sm) !important; }
+
+/* ── FEATURED BOTTOM ────────────────────────────────────────────── */
 .featured-bottom {
-  background: var(--gx);
-  border-top: 1px solid var(--border);
+  background: var(--gx) !important;
+  border-top: 1px solid var(--border) !important;
   padding: 40px 0 !important;
 }
 
-.featured-bottom h2 {
-  font-size: 1.1rem !important;
-  color: var(--gd) !important;
-  margin-bottom: 14px !important;
-}
-
-/* ── SLIDER BAS DE PAGE ─────────────────────────────────────────── */
-#10.flexslider {
-  border-radius: var(--r-lg) !important;
+/* ── LIENS UTILES ───────────────────────────────────────────────── */
+.view-vue-lien-utile .views-row {
+  display: inline-block !important;
+  margin: 4px !important;
+  border-radius: var(--r) !important;
   overflow: hidden !important;
-  border: none !important;
-  box-shadow: var(--sh) !important;
+  transition: transform var(--dur), box-shadow var(--dur) !important;
 }
-
-/* ── COORDONNÉES ────────────────────────────────────────────────── */
-#block-coordonnees {
-  background: white;
-  border-radius: var(--r-lg) !important;
-  border: 1px solid var(--border);
-  padding: 22px !important;
+.view-vue-lien-utile .views-row:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--sh) !important;
 }
 
 /* ── FOOTER ─────────────────────────────────────────────────────── */
 .site-footer {
   background: var(--deeper) !important;
-  padding: 28px 0 !important;
+  padding: 24px 0 !important;
 }
-.site-footer p,
-.site-footer a {
+.site-footer p, .site-footer a {
   color: rgba(255,255,255,.6) !important;
   font-size: .82rem !important;
-  transition: color var(--dur) !important;
 }
 .site-footer a:hover { color: white !important; }
 
@@ -315,19 +342,11 @@ h1.page-title {
 div#sliding-popup {
   border-radius: var(--r-lg) var(--r-lg) 0 0 !important;
 }
-.eu-cookie-compliance-default-button {
-  border-radius: 8px !important;
-  font-weight: 600 !important;
-  transition: opacity var(--dur) !important;
-}
 
-/* ── SCROLL REVEAL (ajouté via JS) ─────────────────────────────── */
+/* ── SCROLL REVEAL ──────────────────────────────────────────────── */
 .cpb-reveal {
   opacity: 0;
   transform: translateY(22px);
   transition: opacity .6s var(--ease), transform .6s var(--ease);
 }
-.cpb-reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.cpb-reveal.visible { opacity: 1; transform: translateY(0); }
