@@ -67,21 +67,31 @@ a { transition: color var(--dur) var(--ease); }
   flex-wrap: wrap !important;
 }
 
+/* Pills arrondis pour email et téléphone */
 #ensemble_email,
-#ensemble_telephone { display: flex !important; align-items: center !important; }
+#ensemble_telephone {
+  display: flex !important;
+  align-items: center !important;
+  background: rgba(255,255,255,.1) !important;
+  border-radius: 30px !important;
+  padding: 4px 14px !important;
+  transition: background var(--dur) !important;
+}
+#ensemble_email:hover,
+#ensemble_telephone:hover { background: rgba(255,255,255,.18) !important; }
 
 #ensemble_email p,
 #ensemble_telephone p {
   font-size: .78rem !important;
-  color: rgba(255,255,255,.68) !important;
+  color: rgba(255,255,255,.85) !important;
   margin: 0 !important;
   white-space: nowrap !important;
 }
-#ensemble_email a { color: rgba(255,255,255,.68) !important; }
+#ensemble_email a { color: rgba(255,255,255,.85) !important; }
 #ensemble_email a:hover { color: white !important; }
-.telephone { color: rgba(255,255,255,.85) !important; font-weight: 600 !important; }
+.telephone { color: white !important; font-weight: 600 !important; }
 
-/* Preinscription dans la barre contact — poussé à droite */
+/* Preinscription arrondie — poussée à droite */
 #ensemble_preinscription { margin-left: auto !important; }
 
 /* Barre nav principale → flex (logo | nav | CTA) */
@@ -91,7 +101,7 @@ a { transition: color var(--dur) var(--ease); }
   gap: 16px !important;
   padding: 8px 20px !important;
   flex-wrap: nowrap !important;
-  background: white !important;
+  background: var(--g) !important;
 }
 /* section layout container ne doit pas contraindre le flex */
 .section.layout-container.clearfix { overflow: visible !important; }
@@ -152,7 +162,7 @@ nav#block-menubobee ul.menu {
 #show-block-menubobee,
 #hide-block-menubobee { display: none !important; }
 
-/* Items principaux — contraste élevé */
+/* Items principaux — texte blanc par défaut */
 nav#block-menubobee ul.menu > .menu-item > span,
 nav#block-menubobee ul.menu > .menu-item > a {
   display: block !important;
@@ -160,18 +170,18 @@ nav#block-menubobee ul.menu > .menu-item > a {
   border-radius: 8px !important;
   font-size: .875rem !important;
   font-weight: 600 !important;
-  color: #1a2a1e !important;        /* presque noir = contraste max */
+  color: white !important;
   cursor: pointer !important;
   letter-spacing: .005em !important;
   transition: background var(--dur), color var(--dur) !important;
   white-space: nowrap !important;
 }
 
-/* Hover → fond vert foncé + texte blanc = contraste parfait */
+/* Hover → fond blanc + texte noir (seulement l'item survolé) */
 nav#block-menubobee ul.menu > .menu-item:hover > span,
 nav#block-menubobee ul.menu > .menu-item:hover > a {
-  background: var(--g) !important;
-  color: white !important;
+  background: white !important;
+  color: #1a2a1e !important;
 }
 
 /* Sous-menus */
@@ -184,8 +194,8 @@ nav#block-menubobee ul.menu > .menu-item--expanded > ul.menu {
   min-width: 230px !important;
   flex-direction: column !important;
   gap: 2px !important;
-  background: white !important;
-  border: 1px solid var(--border) !important;
+  background: var(--deeper) !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
   border-radius: var(--r-lg) !important;
   box-shadow: var(--sh) !important;
   padding: 8px !important;
@@ -202,18 +212,20 @@ nav#block-menubobee ul.menu > .menu-item--expanded:hover > ul.menu {
   pointer-events: auto !important;
   transform: translateY(0) scale(1) !important;
 }
+/* Chaque item du sous-menu : blanc par défaut */
 nav#block-menubobee .menu-item--expanded > ul.menu .menu-item a {
   display: block !important;
   padding: 9px 14px !important;
   border-radius: 8px !important;
   font-size: .84rem !important;
   font-weight: 500 !important;
-  color: #1a2a1e !important;
-  transition: background var(--dur), padding-left var(--dur), color var(--dur) !important;
+  color: rgba(255,255,255,.82) !important;
+  transition: background var(--dur), color var(--dur), padding-left var(--dur) !important;
 }
+/* Hover : UNIQUEMENT cet item → fond blanc + texte noir */
 nav#block-menubobee .menu-item--expanded > ul.menu .menu-item a:hover {
-  background: var(--g) !important;
-  color: white !important;
+  background: white !important;
+  color: #1a2a1e !important;
   padding-left: 20px !important;
 }
 
