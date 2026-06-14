@@ -170,7 +170,7 @@ nav#block-menubobee ul.menu > .menu-item > a {
   border-radius: 8px !important;
   font-size: .875rem !important;
   font-weight: 600 !important;
-  color: white !important;
+  color: var(--g) !important;
   cursor: pointer !important;
   letter-spacing: .005em !important;
   transition: background var(--dur), color var(--dur) !important;
@@ -180,8 +180,8 @@ nav#block-menubobee ul.menu > .menu-item > a {
 /* Hover → fond blanc + texte noir (seulement l'item survolé) */
 nav#block-menubobee ul.menu > .menu-item:hover > span,
 nav#block-menubobee ul.menu > .menu-item:hover > a {
-  background: white !important;
-  color: #1a2a1e !important;
+  background: var(--g) !important;
+  color: white !important;
 }
 
 /* Sous-menus */
