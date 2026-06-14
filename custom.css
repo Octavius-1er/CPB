@@ -368,101 +368,95 @@ h1.page-title {
 .sidebar .block:hover { box-shadow: var(--sh-sm) !important; }
 
 /* ══════════════════════════════════════════════════════════════════
-   FOOTER — reprend les éléments existants, nouveau look
+   FOOTER — éléments existants, nouveau look
 ══════════════════════════════════════════════════════════════════ */
 
-/* ── Conteneur principal du bas de page ─────────────────────────── */
+/* ── Conteneur footer ───────────────────────────────────────────── */
 .featured-bottom {
   background: var(--deeper) !important;
   border-top: none !important;
-  padding: 52px 0 32px !important;
+  padding: 48px 0 36px !important;
 }
 
-/* Grille 3 colonnes pour les 3 régions ────────────────────────── */
-.featured-bottom > .layout-container.clearfix {
+/* Grille 3 colonnes — cibler l'aside + neutraliser clearfix ───── */
+.featured-bottom aside.layout-container {
   display: grid !important;
-  grid-template-columns: 1fr 1fr 1fr !important;
+  grid-template-columns: 1.2fr 1fr 1.2fr !important;
   gap: 40px !important;
   align-items: start !important;
 }
+.featured-bottom aside::before,
+.featured-bottom aside::after { display: none !important; }
 
-/* ── Titres des blocs footer ────────────────────────────────────── */
+/* ── Titres des blocs footer ─────────────────────────────────────  */
 .featured-bottom h2 {
-  font-size: .75rem !important;
+  font-size: .72rem !important;
   font-weight: 700 !important;
-  letter-spacing: .1em !important;
+  letter-spacing: .12em !important;
   text-transform: uppercase !important;
   color: var(--gold) !important;
-  border-bottom: 1px solid rgba(255,255,255,.12) !important;
+  border-bottom: 1px solid rgba(255,255,255,.1) !important;
   padding-bottom: 10px !important;
   margin-bottom: 18px !important;
 }
 
-/* ── LIENS UTILES : grille de logos ────────────────────────────── */
+/* ── LIENS UTILES ────────────────────────────────────────────────── */
 .view-vue-lien-utile .view-content {
   display: flex !important;
   flex-wrap: wrap !important;
   gap: 8px !important;
 }
 .view-vue-lien-utile .views-row {
-  display: flex !important;
+  display: inline-flex !important;
   margin: 0 !important;
   border-radius: var(--r) !important;
   overflow: hidden !important;
-  background: rgba(255,255,255,.07) !important;
-  border: 1px solid rgba(255,255,255,.08) !important;
+  background: rgba(255,255,255,.08) !important;
+  border: 1px solid rgba(255,255,255,.1) !important;
   transition: background var(--dur), transform var(--dur) !important;
 }
 .view-vue-lien-utile .views-row:hover {
-  background: rgba(255,255,255,.15) !important;
+  background: rgba(255,255,255,.18) !important;
   transform: translateY(-3px) !important;
 }
+/* Images logos : vraie taille, pas de filtre destructeur */
 .view-vue-lien-utile img {
-  width: 52px !important;
-  height: 52px !important;
+  width: 58px !important;
+  height: 58px !important;
   object-fit: contain !important;
   border-radius: 0 !important;
-  padding: 4px !important;
-  filter: brightness(0) invert(1) !important;
-  opacity: .65 !important;
+  padding: 6px !important;
+  opacity: .85 !important;
   transition: opacity var(--dur) !important;
+  filter: none !important;
 }
-.view-vue-lien-utile .views-row:hover img {
-  opacity: 1 !important;
-}
+.view-vue-lien-utile .views-row:hover img { opacity: 1 !important; }
 
-/* ── NOUS CONTACTER ─────────────────────────────────────────────── */
+/* ── NOUS CONTACTER ──────────────────────────────────────────────── */
 #block-coordonnees {
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
+  box-shadow: none !important;
 }
 #block-coordonnees p {
   color: rgba(255,255,255,.65) !important;
   font-size: .85rem !important;
-  line-height: 1.8 !important;
+  line-height: 1.9 !important;
   margin: 0 !important;
 }
-#block-coordonnees strong {
-  color: white !important;
-  font-weight: 600 !important;
-}
-#block-coordonnees a {
-  color: rgba(255,255,255,.65) !important;
-  transition: color var(--dur) !important;
-}
+#block-coordonnees strong { color: white !important; font-weight: 600 !important; }
+#block-coordonnees a { color: rgba(255,255,255,.65) !important; transition: color var(--dur) !important; }
 #block-coordonnees a:hover { color: white !important; }
-
-/* Plan d'accès comme un badge */
 #block-coordonnees a[href*="mappy"] {
   display: inline-block !important;
   background: rgba(255,255,255,.1) !important;
-  border: 1px solid rgba(255,255,255,.18) !important;
+  border: 1px solid rgba(255,255,255,.2) !important;
   border-radius: 20px !important;
-  padding: 4px 12px !important;
+  padding: 3px 12px !important;
   font-size: .75rem !important;
   font-weight: 600 !important;
-  margin-top: 6px !important;
+  margin-top: 4px !important;
   transition: background var(--dur) !important;
 }
 #block-coordonnees a[href*="mappy"]:hover {
@@ -470,15 +464,24 @@ h1.page-title {
   color: white !important;
 }
 
-/* ── LE COLLÈGE EN IMAGES (slider bas) ──────────────────────────── */
+/* ── LE COLLÈGE EN IMAGES ────────────────────────────────────────── */
+.region-featured-bottom-third { overflow: hidden !important; }
+
 #10.flexslider {
   border-radius: var(--r-lg) !important;
   overflow: hidden !important;
-  border: 1px solid rgba(255,255,255,.08) !important;
-  box-shadow: 0 8px 28px rgba(0,0,0,.3) !important;
+  border: 1px solid rgba(255,255,255,.1) !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,.35) !important;
   margin: 0 !important;
 }
-#10 img { border-radius: 0 !important; }
+/* Images du slider à vraie taille */
+#10.flexslider img {
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: cover !important;
+  border-radius: 0 !important;
+  display: block !important;
+}
 
 /* ── BARRE COPYRIGHT ─────────────────────────────────────────────── */
 .site-footer {
@@ -499,11 +502,11 @@ h1.page-title {
 }
 .site-footer a:hover { color: rgba(255,255,255,.85) !important; }
 
-/* ── Responsive footer ──────────────────────────────────────────── */
+/* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .featured-bottom > .layout-container.clearfix {
+  .featured-bottom aside.layout-container {
     grid-template-columns: 1fr !important;
-    gap: 32px !important;
+    gap: 30px !important;
   }
 }
 
