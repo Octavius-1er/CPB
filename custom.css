@@ -75,14 +75,17 @@ a { transition: color var(--dur) var(--ease); }
 .region-header {
   display: flex !important;
   align-items: center !important;
-  gap: 12px !important;
-  padding: 6px 20px !important;
+  gap: 16px !important;
+  padding: 8px 20px !important;
   flex-wrap: nowrap !important;
 }
+/* section layout container ne doit pas contraindre le flex */
+.section.layout-container.clearfix { overflow: visible !important; }
 
 #block-menubobee {
   flex: 1 !important;
   min-width: 0 !important;
+  overflow: visible !important;
 }
 
 /* ── LOGO ───────────────────────────────────────────────────────── */
@@ -121,6 +124,8 @@ nav#block-menubobee .content {
   display: block !important;
 }
 
+/* Forcer menu visible quelle que soit la cible CSS Drupal */
+nav#block-menubobee .content > ul.menu,
 nav#block-menubobee ul.menu {
   display: flex !important;
   gap: 2px !important;
@@ -129,6 +134,9 @@ nav#block-menubobee ul.menu {
   padding: 0 !important;
   margin: 0 !important;
 }
+/* Override Drupal toggle visibility */
+#show-block-menubobee,
+#hide-block-menubobee { display: none !important; }
 
 /* Items principaux — contraste élevé */
 nav#block-menubobee ul.menu > .menu-item > span,
@@ -201,6 +209,7 @@ nav#block-menubobee .menu-item--expanded > ul.menu .menu-item a:hover {
   flex-shrink: 0 !important;
   display: flex !important;
   align-items: center !important;
+  margin-left: auto !important;
 }
 .cpb-preinscription-btn,
 #ensemble_preinscription a {
