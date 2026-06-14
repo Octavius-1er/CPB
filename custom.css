@@ -400,3 +400,19 @@ div#sliding-popup {
   transition: opacity .6s var(--ease), transform .6s var(--ease);
 }
 .cpb-reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Fix text_cap : blanc sur fond blanc → vert ────────────────── */
+/* Le CSS Drupal définit color:#FFF (prévu sur fond vert).          */
+/* Notre sidebar est blanche → on remet en vert pour le contraste.  */
+#block-blocdumenudelasemaine a.text_cap,
+#block-blocesidoc a.text_cap,
+#block-blocscolinfo a.text_cap {
+  color: var(--g) !important;
+  background: none !important;
+}
+#block-blocdumenudelasemaine a.text_cap:hover,
+#block-blocesidoc a.text_cap:hover,
+#block-blocscolinfo a.text_cap:hover {
+  color: var(--deeper) !important;
+  text-decoration: underline !important;
+}
