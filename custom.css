@@ -37,15 +37,16 @@ a { transition: color var(--dur) var(--ease); }
 
 /* ── HEADER STICKY ─────────────────────────────────────────────── */
 #header {
-  position: static !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 999 !important;
   background: white !important;
 }
 
-/* Seule la barre nav est sticky */
+/* Header complet sticky — géré par #header */
 .region-header {
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 500 !important;
+  position: relative !important;
+  z-index: 1 !important;
   background: white !important;
   box-shadow: 0 6px 20px rgba(62,95,70,.4) !important;
   transition: box-shadow var(--dur) var(--ease) !important;
