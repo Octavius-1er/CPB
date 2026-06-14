@@ -436,3 +436,25 @@ div#sliding-popup {
   height: auto !important;
   border-radius: 8px !important;
 }
+
+/* ── Blocs action : fond vert + texte blanc ────────────────────── */
+/* Cantine, CDI Esidoc, EcoleDirecte → look bouton/CTA             */
+#block-blocdumenudelasemaine,
+#block-blocesidoc,
+#block-blocscolinfo {
+  background: var(--g) !important;
+  border-color: var(--deeper) !important;
+  box-shadow: none !important;
+}
+/* Override du fix précédent : blanc sur fond vert, c'est bon */
+#block-blocdumenudelasemaine a.text_cap,
+#block-blocesidoc a.text_cap,
+#block-blocscolinfo a.text_cap {
+  color: white !important;
+}
+#block-blocdumenudelasemaine a.text_cap:hover,
+#block-blocesidoc a.text_cap:hover,
+#block-blocscolinfo a.text_cap:hover {
+  color: rgba(255,255,255,.8) !important;
+  text-decoration: underline !important;
+}
