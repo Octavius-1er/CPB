@@ -40,21 +40,27 @@ a { transition: color var(--dur) var(--ease); }
   position: relative !important;
   z-index: 1 !important;
   background: white !important;
-  padding-top: 82px !important; /* réserve la place pour la nav fixe */
 }
+/* Quand la nav est collée : compenser la hauteur retirée du flux */
+#header.nav-fixed { padding-top: 82px !important; }
 
-/* Nav bar : toujours fixe en haut */
+/* Nav bar : normale au chargement, fixe via JS au scroll */
 .region-header {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
+  position: relative !important;
   z-index: 999 !important;
   background: white !important;
   box-shadow: 0 6px 20px rgba(62,95,70,.4) !important;
   transition: box-shadow var(--dur) var(--ease) !important;
 }
 .region-header.scrolled { box-shadow: var(--sh) !important; }
+.region-header.is-sticky {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  box-shadow: var(--sh) !important;
+}
 
 /* ── LAYOUT HEADER ─────────────────────────────────────────────── */
 
