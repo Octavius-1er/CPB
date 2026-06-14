@@ -37,6 +37,12 @@ a { transition: color var(--dur) var(--ease); }
 
 /* ── HEADER STICKY ─────────────────────────────────────────────── */
 #header {
+  position: static !important;
+  background: white !important;
+}
+
+/* Seule la barre nav est sticky */
+.region-header {
   position: sticky !important;
   top: 0 !important;
   z-index: 500 !important;
@@ -44,32 +50,39 @@ a { transition: color var(--dur) var(--ease); }
   box-shadow: var(--sh-sm) !important;
   transition: box-shadow var(--dur) var(--ease) !important;
 }
-#header.scrolled { box-shadow: var(--sh) !important; }
+.region-header.scrolled { box-shadow: var(--sh) !important; }
 
 /* ── LAYOUT HEADER ─────────────────────────────────────────────── */
 
-/* Barre contact (email + tél) → top bar discret */
+/* Barre contact — NON sticky, flex : email | tél | preinscription */
 .region-secondary-menu {
   background: var(--deeper) !important;
-  padding: 7px 20px !important;
+  padding: 8px 20px !important;
 }
 
 #block-blocpourtelephoneetemail .field__item {
   display: flex !important;
-  gap: 20px !important;
   align-items: center !important;
+  gap: 20px !important;
   flex-wrap: wrap !important;
 }
+
+#ensemble_email,
+#ensemble_telephone { display: flex !important; align-items: center !important; }
 
 #ensemble_email p,
 #ensemble_telephone p {
   font-size: .78rem !important;
-  color: rgba(255,255,255,.7) !important;
+  color: rgba(255,255,255,.68) !important;
   margin: 0 !important;
+  white-space: nowrap !important;
 }
-#ensemble_email a { color: rgba(255,255,255,.7) !important; }
+#ensemble_email a { color: rgba(255,255,255,.68) !important; }
 #ensemble_email a:hover { color: white !important; }
 .telephone { color: rgba(255,255,255,.85) !important; font-weight: 600 !important; }
+
+/* Preinscription dans la barre contact — poussé à droite */
+#ensemble_preinscription { margin-left: auto !important; }
 
 /* Barre nav principale → flex (logo | nav | CTA) */
 .region-header {
@@ -78,6 +91,7 @@ a { transition: color var(--dur) var(--ease); }
   gap: 16px !important;
   padding: 8px 20px !important;
   flex-wrap: nowrap !important;
+  background: white !important;
 }
 /* section layout container ne doit pas contraindre le flex */
 .section.layout-container.clearfix { overflow: visible !important; }
@@ -204,13 +218,7 @@ nav#block-menubobee .menu-item--expanded > ul.menu .menu-item a:hover {
 }
 
 /* ── BOUTON PRÉ-INSCRIPTION (dans le header) ────────────────────── */
-#ensemble_preinscription,
-.cpb-header-cta {
-  flex-shrink: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  margin-left: auto !important;
-}
+/* preinscription est dans la barre contact, pas dans la nav */
 .cpb-preinscription-btn,
 #ensemble_preinscription a {
   display: inline-block !important;
