@@ -378,12 +378,15 @@ h1.page-title {
   padding: 48px 0 36px !important;
 }
 
-/* Grille 3 colonnes — cibler l'aside + neutraliser clearfix ───── */
+/* Grille 3 colonnes égales ─────────────────────────────────────── */
 .featured-bottom aside.layout-container {
   display: grid !important;
-  grid-template-columns: 1.2fr 1fr 1.2fr !important;
-  gap: 40px !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 48px !important;
   align-items: start !important;
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
 }
 .featured-bottom aside::before,
 .featured-bottom aside::after { display: none !important; }
@@ -444,6 +447,9 @@ h1.page-title {
   font-size: .85rem !important;
   line-height: 1.9 !important;
   margin: 0 !important;
+  text-align: left !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
 }
 #block-coordonnees strong { color: white !important; font-weight: 600 !important; }
 #block-coordonnees a { color: rgba(255,255,255,.65) !important; transition: color var(--dur) !important; }
@@ -473,11 +479,19 @@ h1.page-title {
   border: 1px solid rgba(255,255,255,.1) !important;
   box-shadow: 0 8px 28px rgba(0,0,0,.35) !important;
   margin: 0 !important;
-}
-/* Images du slider à vraie taille */
-#10.flexslider img {
   width: 100% !important;
-  height: 200px !important;
+}
+#10.flexslider .slides,
+#10.flexslider .flex-viewport,
+#10.flexslider li {
+  width: 100% !important;
+}
+/* Images du slider pleine largeur */
+#10.flexslider img,
+#10.flexslider .views-field img {
+  width: 100% !important;
+  min-width: 100% !important;
+  height: 220px !important;
   object-fit: cover !important;
   border-radius: 0 !important;
   display: block !important;
