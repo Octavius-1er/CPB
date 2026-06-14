@@ -367,36 +367,145 @@ h1.page-title {
 }
 .sidebar .block:hover { box-shadow: var(--sh-sm) !important; }
 
-/* ── FEATURED BOTTOM ────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════════
+   FOOTER — reprend les éléments existants, nouveau look
+══════════════════════════════════════════════════════════════════ */
+
+/* ── Conteneur principal du bas de page ─────────────────────────── */
 .featured-bottom {
-  background: var(--gx) !important;
-  border-top: 1px solid var(--border) !important;
-  padding: 40px 0 !important;
+  background: var(--deeper) !important;
+  border-top: none !important;
+  padding: 52px 0 32px !important;
 }
 
-/* ── LIENS UTILES ───────────────────────────────────────────────── */
+/* Grille 3 colonnes pour les 3 régions ────────────────────────── */
+.featured-bottom > .layout-container.clearfix {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  gap: 40px !important;
+  align-items: start !important;
+}
+
+/* ── Titres des blocs footer ────────────────────────────────────── */
+.featured-bottom h2 {
+  font-size: .75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+  color: var(--gold) !important;
+  border-bottom: 1px solid rgba(255,255,255,.12) !important;
+  padding-bottom: 10px !important;
+  margin-bottom: 18px !important;
+}
+
+/* ── LIENS UTILES : grille de logos ────────────────────────────── */
+.view-vue-lien-utile .view-content {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
 .view-vue-lien-utile .views-row {
-  display: inline-block !important;
-  margin: 4px !important;
+  display: flex !important;
+  margin: 0 !important;
   border-radius: var(--r) !important;
   overflow: hidden !important;
-  transition: transform var(--dur), box-shadow var(--dur) !important;
+  background: rgba(255,255,255,.07) !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  transition: background var(--dur), transform var(--dur) !important;
 }
 .view-vue-lien-utile .views-row:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: var(--sh) !important;
+  background: rgba(255,255,255,.15) !important;
+  transform: translateY(-3px) !important;
+}
+.view-vue-lien-utile img {
+  width: 52px !important;
+  height: 52px !important;
+  object-fit: contain !important;
+  border-radius: 0 !important;
+  padding: 4px !important;
+  filter: brightness(0) invert(1) !important;
+  opacity: .65 !important;
+  transition: opacity var(--dur) !important;
+}
+.view-vue-lien-utile .views-row:hover img {
+  opacity: 1 !important;
 }
 
-/* ── FOOTER ─────────────────────────────────────────────────────── */
+/* ── NOUS CONTACTER ─────────────────────────────────────────────── */
+#block-coordonnees {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+#block-coordonnees p {
+  color: rgba(255,255,255,.65) !important;
+  font-size: .85rem !important;
+  line-height: 1.8 !important;
+  margin: 0 !important;
+}
+#block-coordonnees strong {
+  color: white !important;
+  font-weight: 600 !important;
+}
+#block-coordonnees a {
+  color: rgba(255,255,255,.65) !important;
+  transition: color var(--dur) !important;
+}
+#block-coordonnees a:hover { color: white !important; }
+
+/* Plan d'accès comme un badge */
+#block-coordonnees a[href*="mappy"] {
+  display: inline-block !important;
+  background: rgba(255,255,255,.1) !important;
+  border: 1px solid rgba(255,255,255,.18) !important;
+  border-radius: 20px !important;
+  padding: 4px 12px !important;
+  font-size: .75rem !important;
+  font-weight: 600 !important;
+  margin-top: 6px !important;
+  transition: background var(--dur) !important;
+}
+#block-coordonnees a[href*="mappy"]:hover {
+  background: rgba(255,255,255,.2) !important;
+  color: white !important;
+}
+
+/* ── LE COLLÈGE EN IMAGES (slider bas) ──────────────────────────── */
+#10.flexslider {
+  border-radius: var(--r-lg) !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,.3) !important;
+  margin: 0 !important;
+}
+#10 img { border-radius: 0 !important; }
+
+/* ── BARRE COPYRIGHT ─────────────────────────────────────────────── */
 .site-footer {
-  background: var(--deeper) !important;
-  padding: 24px 0 !important;
+  background: #111a14 !important;
+  padding: 16px 0 !important;
+  border-top: 1px solid rgba(255,255,255,.08) !important;
 }
-.site-footer p, .site-footer a {
-  color: rgba(255,255,255,.6) !important;
-  font-size: .82rem !important;
+.site-footer p {
+  color: rgba(255,255,255,.4) !important;
+  font-size: .78rem !important;
+  margin: 0 !important;
+  text-align: center !important;
 }
-.site-footer a:hover { color: white !important; }
+.site-footer a {
+  color: rgba(255,255,255,.45) !important;
+  font-size: .78rem !important;
+  transition: color var(--dur) !important;
+}
+.site-footer a:hover { color: rgba(255,255,255,.85) !important; }
+
+/* ── Responsive footer ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .featured-bottom > .layout-container.clearfix {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
 
 /* ── COOKIE BANNER ──────────────────────────────────────────────── */
 div#sliding-popup {
