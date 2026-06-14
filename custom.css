@@ -140,7 +140,18 @@ a { transition: color var(--dur) var(--ease); }
   min-width: 0 !important;
 }
 
-#block-boutonpouraffichernavigation { display: none; } /* masqué desktop */
+/* ── RESPONSIVE ────────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  /* Desktop : bouton mobile caché, nav complète visible */
+  #block-boutonpouraffichernavigation { display: none !important; }
+}
+@media (max-width: 767px) {
+  /* Mobile : bouton "Navigation" visible, nav se replie */
+  .region-header { flex-wrap: wrap !important; padding: 6px 12px !important; }
+  #block-boutonpouraffichernavigation { display: block !important; order: 2; }
+  #block-bobee-branding { order: 1; }
+  nav#block-menubobee { order: 3; width: 100%; }
+}
 
 nav#block-menubobee .menu-toggle-target,
 nav#block-menubobee .menu-toggle { display: none !important; }
