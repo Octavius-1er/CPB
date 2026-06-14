@@ -371,39 +371,54 @@ h1.page-title {
    FOOTER — éléments existants, nouveau look
 ══════════════════════════════════════════════════════════════════ */
 
-/* ── Conteneur footer ───────────────────────────────────────────── */
 .featured-bottom {
   background: var(--deeper) !important;
   border-top: none !important;
   padding: 48px 0 36px !important;
 }
 
-/* Grille 3 colonnes égales ─────────────────────────────────────── */
-.featured-bottom aside.layout-container {
+/* Neutralise float Drupal + applique grid sur l'aside */
+.featured-bottom aside.layout-container,
+.featured-bottom .layout-container {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
-  gap: 48px !important;
+  gap: 40px !important;
   align-items: start !important;
   max-width: 1180px !important;
   margin: 0 auto !important;
   padding: 0 24px !important;
+  float: none !important;
+  width: auto !important;
 }
 .featured-bottom aside::before,
-.featured-bottom aside::after { display: none !important; }
+.featured-bottom aside::after,
+.featured-bottom .layout-container::before,
+.featured-bottom .layout-container::after { display: none !important; }
 
-/* ── Titres des blocs footer ─────────────────────────────────────  */
+/* Régions : annuler les floats Drupal */
+.featured-bottom .region-featured-bottom-first,
+.featured-bottom .region-featured-bottom-second,
+.featured-bottom .region-featured-bottom-third {
+  float: none !important;
+  width: auto !important;
+  min-width: 0 !important;
+}
+
+/* Titres */
 .featured-bottom h2 {
   font-size: .72rem !important;
   font-weight: 700 !important;
-  letter-spacing: .12em !important;
+  letter-spacing: .1em !important;
   text-transform: uppercase !important;
   color: var(--gold) !important;
   border-bottom: 1px solid rgba(255,255,255,.1) !important;
   padding-bottom: 10px !important;
   margin-bottom: 18px !important;
+  word-break: keep-all !important;
+  white-space: nowrap !important;
 }
 
-/* ── LIENS UTILES ────────────────────────────────────────────────── */
+/* ── LIENS UTILES ── */
 .view-vue-lien-utile .view-content {
   display: flex !important;
   flex-wrap: wrap !important;
@@ -422,7 +437,6 @@ h1.page-title {
   background: rgba(255,255,255,.18) !important;
   transform: translateY(-3px) !important;
 }
-/* Images logos : vraie taille, pas de filtre destructeur */
 .view-vue-lien-utile img {
   width: 58px !important;
   height: 58px !important;
@@ -430,18 +444,19 @@ h1.page-title {
   border-radius: 0 !important;
   padding: 6px !important;
   opacity: .85 !important;
-  transition: opacity var(--dur) !important;
   filter: none !important;
+  transition: opacity var(--dur) !important;
 }
 .view-vue-lien-utile .views-row:hover img { opacity: 1 !important; }
 
-/* ── NOUS CONTACTER ──────────────────────────────────────────────── */
+/* ── NOUS CONTACTER ── */
 #block-coordonnees {
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
   box-shadow: none !important;
 }
+#block-coordonnees .field__item,
 #block-coordonnees p {
   color: rgba(255,255,255,.65) !important;
   font-size: .85rem !important;
@@ -463,17 +478,14 @@ h1.page-title {
   font-size: .75rem !important;
   font-weight: 600 !important;
   margin-top: 4px !important;
-  transition: background var(--dur) !important;
 }
-#block-coordonnees a[href*="mappy"]:hover {
-  background: rgba(255,255,255,.2) !important;
-  color: white !important;
-}
+#block-coordonnees a[href*="mappy"]:hover { background: rgba(255,255,255,.2) !important; color: white !important; }
 
-/* ── LE COLLÈGE EN IMAGES ────────────────────────────────────────── */
+/* ── LE COLLÈGE EN IMAGES ── */
 .region-featured-bottom-third { overflow: hidden !important; }
-
-#10.flexslider {
+div#\31 0.flexslider,
+[id="10"].flexslider,
+#block-views-block-vue-visuel-bas-block-1 .flexslider {
   border-radius: var(--r-lg) !important;
   overflow: hidden !important;
   border: 1px solid rgba(255,255,255,.1) !important;
@@ -481,47 +493,34 @@ h1.page-title {
   margin: 0 !important;
   width: 100% !important;
 }
-#10.flexslider .slides,
-#10.flexslider .flex-viewport,
-#10.flexslider li {
+#block-views-block-vue-visuel-bas-block-1 .flexslider .slides,
+#block-views-block-vue-visuel-bas-block-1 .flexslider .flex-viewport,
+#block-views-block-vue-visuel-bas-block-1 .flexslider li { width: 100% !important; }
+#block-views-block-vue-visuel-bas-block-1 .flexslider img {
   width: 100% !important;
-}
-/* Images du slider pleine largeur */
-#10.flexslider img,
-#10.flexslider .views-field img {
-  width: 100% !important;
-  min-width: 100% !important;
   height: 220px !important;
   object-fit: cover !important;
   border-radius: 0 !important;
   display: block !important;
 }
 
-/* ── BARRE COPYRIGHT ─────────────────────────────────────────────── */
+/* ── COPYRIGHT ── */
 .site-footer {
   background: #111a14 !important;
   padding: 16px 0 !important;
   border-top: 1px solid rgba(255,255,255,.08) !important;
 }
-.site-footer p {
-  color: rgba(255,255,255,.4) !important;
-  font-size: .78rem !important;
-  margin: 0 !important;
-  text-align: center !important;
-}
-.site-footer a {
-  color: rgba(255,255,255,.45) !important;
-  font-size: .78rem !important;
-  transition: color var(--dur) !important;
-}
+.site-footer p { color: rgba(255,255,255,.4) !important; font-size: .78rem !important; margin: 0 !important; text-align: center !important; }
+.site-footer a { color: rgba(255,255,255,.45) !important; font-size: .78rem !important; transition: color var(--dur) !important; }
 .site-footer a:hover { color: rgba(255,255,255,.85) !important; }
 
-/* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .featured-bottom aside.layout-container {
+  .featured-bottom aside.layout-container,
+  .featured-bottom .layout-container {
     grid-template-columns: 1fr !important;
     gap: 30px !important;
   }
+}
 }
 
 /* ── COOKIE BANNER ──────────────────────────────────────────────── */
