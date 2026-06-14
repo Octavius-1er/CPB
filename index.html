@@ -734,6 +734,21 @@ Fax. <strong>+33 (0)2 35 56 46 88</strong><br /><br /><a class="mail_basdepage" 
     els.forEach(function(el){ obs.observe(el); });
   }
 })();
+  // ── Nav sticky : fixe seulement après avoir défilé la barre contact ──
+  (function(){
+    var hdr   = document.getElementById('header');
+    var nav   = document.querySelector('.region-header');
+    var sec   = document.querySelector('.region-secondary-menu');
+    if(!hdr || !nav) return;
+    function check(){
+      var threshold = sec ? (sec.offsetTop + sec.offsetHeight) : 0;
+      var sticky = window.scrollY >= threshold;
+      nav.classList.toggle('is-sticky', sticky);
+      hdr.classList.toggle('nav-fixed', sticky);
+    }
+    window.addEventListener('scroll', check, {passive:true});
+    check();
+  })();
 </script>
 
 </body>
