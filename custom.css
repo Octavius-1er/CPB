@@ -101,7 +101,8 @@ a { transition: color var(--dur) var(--ease); }
   gap: 16px !important;
   padding: 8px 20px !important;
   flex-wrap: nowrap !important;
-  background: var(--g) !important;
+  background: white !important;
+  border-bottom: 1px solid var(--border) !important;
 }
 /* section layout container ne doit pas contraindre le flex */
 .section.layout-container.clearfix { overflow: visible !important; }
