@@ -449,7 +449,7 @@ div#sliding-popup {
 #block-blocdumenudelasemaine:hover,
 #block-blocesidoc:hover,
 #block-blocscolinfo:hover {
-  box-shadow: 0 6px 20px rgba(62,95,70,.4) !important;
+  box-shadow: var(--sh-sm) !important;
 }
 /* Override du fix précédent : blanc sur fond vert, c'est bon */
 #block-blocdumenudelasemaine a.text_cap,
