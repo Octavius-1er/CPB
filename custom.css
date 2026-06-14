@@ -416,3 +416,23 @@ div#sliding-popup {
   color: var(--deeper) !important;
   text-decoration: underline !important;
 }
+
+/* ── Fix débordement texte/image bloc cantine ──────────────────── */
+/* Le CSS Drupal positionne l'image en absolute, ce qui la fait     */
+/* chevaucher le texte. On remet un flux normal.                    */
+#block-blocdumenudelasemaine {
+  overflow: hidden !important;
+}
+#block-blocdumenudelasemaine .field__item p {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  margin: 0 !important;
+}
+#block-blocdumenudelasemaine img.image_bloc_couvert {
+  position: static !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 8px !important;
+}
