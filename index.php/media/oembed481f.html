@@ -6,10 +6,35 @@
 <head>
     <link rel="stylesheet" media="all" href="../../sites/default/files/css/css_REZt01W0Pj4GrqJHdPCMs0xbMA-RLlgiburyk_qeOrQ.css" />
 
-  </head>
+  <link rel="stylesheet" href="/custom.css"/>
+</head>
   <body style="margin: 0">
     <iframe width="200" height="113" src="https://www.youtube.com/embed/6l3N0yqYJ6w?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen title="Cyrano - Collège Bobée - Expression théâtrale - YVETOT"></iframe>
-  </body>
+  <script>
+(function(){
+  // Nav sticky shadow
+  var h=document.getElementById('header');
+  if(h)window.addEventListener('scroll',function(){h.classList.toggle('scrolled',window.scrollY>8);},{passive:true});
+  // Scroll reveal
+  var els=document.querySelectorAll('.views-row,.block-views,#block-coordonnees,.featured-bottom .block');
+  if('IntersectionObserver'in window){
+    els.forEach(function(el){el.classList.add('cpb-reveal');});
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+    els.forEach(function(el){obs.observe(el);});
+  }
+  // Nav sticky apres barre contact
+  (function(){
+    var hdr=document.getElementById('header');
+    var nav=document.querySelector('.region-header');
+    var sec=document.querySelector('.region-secondary-menu');
+    if(!hdr||!nav)return;
+    function check(){var t=sec?sec.offsetHeight:0;var s=window.scrollY>=t;nav.classList.toggle('is-sticky',s);hdr.classList.toggle('nav-fixed',s);}
+    window.addEventListener('scroll',check,{passive:true});
+    check();
+  })();
+})();
+</script>
+</body>
 
 <!-- Mirrored from collegeprivebobee.fr/index.php/media/oembed?url=https%3A//www.youtube.com/watch%3Fv%3D6l3N0yqYJ6w&max_width=0&max_height=0&hash=L4bDP6VkQPE2F1CAOVi71EO6pmqjZADwuoKFhwLd4UU by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jun 2026 19:58:25 GMT -->
 </html>
