@@ -47,7 +47,7 @@ a { transition: color var(--dur) var(--ease); }
   top: 0 !important;
   z-index: 500 !important;
   background: white !important;
-  box-shadow: var(--sh-sm) !important;
+  box-shadow: 0 6px 20px rgba(62,95,70,.4) !important;
   transition: box-shadow var(--dur) var(--ease) !important;
 }
 .region-header.scrolled { box-shadow: var(--sh) !important; }
@@ -449,7 +449,7 @@ div#sliding-popup {
 #block-blocdumenudelasemaine:hover,
 #block-blocesidoc:hover,
 #block-blocscolinfo:hover {
-  box-shadow: var(--sh-sm) !important;
+  box-shadow: 0 6px 20px rgba(62,95,70,.4) !important;
 }
 /* Override du fix précédent : blanc sur fond vert, c'est bon */
 #block-blocdumenudelasemaine a.text_cap,
