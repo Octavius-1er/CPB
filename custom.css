@@ -55,11 +55,12 @@ a { transition: color var(--dur) var(--ease); }
 .region-header.scrolled { box-shadow: var(--sh) !important; }
 .region-header.is-sticky {
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: 100% !important;
+  top: 8px !important;
+  left: 12px !important;
+  right: 12px !important;
+  width: calc(100% - 24px) !important;
   box-shadow: var(--sh) !important;
+  border-radius: 16px !important;
 }
 
 /* ── LAYOUT HEADER ─────────────────────────────────────────────── */
@@ -137,6 +138,7 @@ a { transition: color var(--dur) var(--ease); }
   flex-wrap: nowrap !important;
   background: white !important;
   border-bottom: 1px solid var(--border) !important;
+  border-radius: 16px !important;
 }
 /* section layout container ne doit pas contraindre le flex */
 .section.layout-container.clearfix { overflow: visible !important; }
