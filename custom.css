@@ -111,7 +111,22 @@ a { transition: color var(--dur) var(--ease); }
 .telephone { color: white !important; font-weight: 600 !important; }
 
 /* Preinscription arrondie — poussée à droite */
-#ensemble_preinscription { margin-left: auto !important; }
+#ensemble_preinscription {
+  margin-left: auto !important;
+  background: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+#ensemble_preinscription p {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  border-radius: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
 
 /* Barre nav principale → flex (logo | nav | CTA) */
 .region-header {
