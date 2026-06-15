@@ -25,7 +25,8 @@
 <link rel="stylesheet" media="all" href="sites/default/files/css/css_vZwA_dWwiFd9x51279_uTa17iB2_VXKay_qdIh1XiL8.css" />
 
     
-  </head>
+  <link rel="stylesheet" href="/custom.css"/>
+</head>
   <body class="fontyourface layout-one-sidebar layout-sidebar-second path-actualités">
         <a href="#main-content" class="visually-hidden focusable skip-link">
       Aller au contenu principal
@@ -697,7 +698,25 @@ Fax. <strong>+33 (0)2 35 56 46 88</strong><br /><br /><a class="mail_basdepage" 
 <script src="modules/contrib/eu_cookie_compliance/js/eu_cookie_compliance.mindfb4.js?v=9.5.11" defer></script>
 <script src="sites/default/files/js/js__ze7VP46YLqv_5cMj5XfXgssE8fNiBRvBz6gzQqYzxE.js"></script>
 
-  </body>
+  <script>
+(function(){
+  var h=document.getElementById('header');
+  if(h)window.addEventListener('scroll',function(){h.classList.toggle('scrolled',window.scrollY>8);},{passive:true});
+  var els=document.querySelectorAll('.views-row,.block-views,#block-coordonnees,.featured-bottom .block');
+  if('IntersectionObserver'in window){
+    els.forEach(function(el){el.classList.add('cpb-reveal');});
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+    els.forEach(function(el){obs.observe(el);});
+  }
+  (function(){
+    var hdr=document.getElementById('header');var nav=document.querySelector('.region-header');var sec=document.querySelector('.region-secondary-menu');
+    if(!hdr||!nav)return;
+    function check(){var t=sec?sec.offsetHeight:0;var s=window.scrollY>=t;nav.classList.toggle('is-sticky',s);hdr.classList.toggle('nav-fixed',s);}
+    window.addEventListener('scroll',check,{passive:true});check();
+  })();
+})();
+</script>
+</body>
 
 <!-- Mirrored from collegeprivebobee.fr/actualités?page=68 by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jun 2026 19:41:46 GMT -->
 </html>
