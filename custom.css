@@ -277,12 +277,12 @@ nav#block-menubobee .menu-item--expanded > ul.menu .menu-item a:hover {
 
 /* ── BOUTON PRÉ-INSCRIPTION (dans le header) ────────────────────── */
 /* preinscription est dans la barre contact, pas dans la nav */
-/* Pré-inscription : même pill que contact */
+/* Pré-inscription : pill dorée */
 .cpb-preinscription-btn,
 #ensemble_preinscription a {
   display: inline-block !important;
-  background: rgba(255,255,255,.12) !important;
-  color: rgba(255,255,255,.9) !important;
+  background: var(--gold) !important;
+  color: white !important;
   padding: 5px 14px !important;
   border-radius: 30px !important;
   font-weight: 600 !important;
@@ -294,7 +294,7 @@ nav#block-menubobee .menu-item--expanded > ul.menu .menu-item a:hover {
 }
 .cpb-preinscription-btn:hover,
 #ensemble_preinscription a:hover {
-  background: rgba(255,255,255,.22) !important;
+  background: #a8841f !important;
   color: white !important;
 }
 #ensemble_preinscription p { margin: 0 !important; }
