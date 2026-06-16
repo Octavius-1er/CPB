@@ -278,6 +278,74 @@
   }
 }
 </style>
+
+<style id="cpb-agenda-anim">
+/* ── Animations agenda ───────────────────────────────────────── */
+@keyframes cpb-fadeUp   { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+@keyframes cpb-fadeIn   { from{opacity:0} to{opacity:1} }
+@keyframes cpb-scaleIn  { from{opacity:0;transform:scale(.92)} to{opacity:1;transform:scale(1)} }
+@keyframes cpb-slideL   { from{opacity:0;transform:translateX(-30px)} to{opacity:1;transform:none} }
+@keyframes cpb-slideR   { from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:none} }
+@keyframes cpb-popIn    { 0%{transform:scale(.5);opacity:0} 70%{transform:scale(1.05)} 100%{transform:scale(1);opacity:1} }
+
+/* Page load */
+.cpb-cal-wrap { animation: cpb-fadeUp .5s ease both; }
+.cpb-cal-nav  { animation: cpb-fadeUp .5s .1s ease both; }
+
+/* Titre du mois */
+#cpb-cal-month { display:inline-block; transition: opacity .25s, transform .25s; }
+#cpb-cal-month.anim-out { opacity:0; transform:translateY(-8px); }
+#cpb-cal-month.anim-in  { animation: cpb-fadeUp .3s ease both; }
+
+/* Jours du calendrier — stagger */
+.cpb-cal-day {
+  animation: cpb-scaleIn .3s ease both;
+  transform-origin: center;
+}
+
+/* Pills */
+.cpb-cal-pill {
+  animation: cpb-fadeUp .2s ease both;
+  transition: transform .15s, opacity .15s, box-shadow .15s !important;
+}
+.cpb-cal-pill:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 8px rgba(0,0,0,.18) !important;
+}
+
+/* Boutons navigation */
+.cpb-cal-arrow {
+  transition: background .2s, transform .15s, box-shadow .15s !important;
+}
+.cpb-cal-arrow:active { transform: scale(.88) !important; }
+
+/* Popup */
+.cpb-ev-popup {
+  animation: cpb-fadeIn .2s ease both;
+  backdrop-filter: blur(4px);
+}
+.cpb-ev-popup-box {
+  animation: cpb-scaleIn .25s cubic-bezier(.34,1.56,.64,1) both;
+}
+.cpb-ev-popup-close {
+  transition: color .15s, transform .15s;
+}
+.cpb-ev-popup-close:hover { color: #333; transform: scale(1.2); }
+
+/* Today pulse */
+.cpb-cal-day.today {
+  animation: cpb-scaleIn .3s ease both, cpb-todayPulse 2.5s 1s ease infinite;
+}
+@keyframes cpb-todayPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(62,95,70,.25); }
+  50%      { box-shadow: 0 0 0 6px rgba(62,95,70,0); }
+}
+
+/* Légende fade */
+.cpb-cal-leg-item {
+  animation: cpb-fadeUp .4s ease both;
+}
+</style>
   <div class="cpb-cal-wrap">
     <h1 class="cpb-cal-title">📅 Agenda du collège</h1>
     <div class="cpb-cal-nav">
@@ -397,11 +465,29 @@
     grid.querySelectorAll('.cpb-cal-pill').forEach(function(el){
       el.onclick=function(){showPopup(JSON.parse(decodeURIComponent(this.dataset.ev)));};
     });
+    // Stagger animation sur chaque case
+    var days=grid.querySelectorAll('.cpb-cal-day:not(.empty)');
+    days.forEach(function(el,i){
+      el.style.animationDelay=(i*18)+'ms';
+    });
+    // Slide titre
+    var title=document.getElementById('cpb-cal-month');
+    title.classList.remove('anim-out');
+    title.classList.add('anim-in');
+    setTimeout(function(){title.classList.remove('anim-in');},400);
   }
 
   document.addEventListener('DOMContentLoaded',function(){
-    document.getElementById('cpb-prev').onclick=function(){cur=new Date(cur.getFullYear(),cur.getMonth()-1,1);render();};
-    document.getElementById('cpb-next').onclick=function(){cur=new Date(cur.getFullYear(),cur.getMonth()+1,1);render();};
+    document.getElementById('cpb-prev').onclick=function(){
+      var t=document.getElementById('cpb-cal-month');
+      t.classList.add('anim-out');
+      setTimeout(function(){cur=new Date(cur.getFullYear(),cur.getMonth()-1,1);render();},220);
+    };
+    document.getElementById('cpb-next').onclick=function(){
+      var t=document.getElementById('cpb-cal-month');
+      t.classList.add('anim-out');
+      setTimeout(function(){cur=new Date(cur.getFullYear(),cur.getMonth()+1,1);render();},220);
+    };
     render();
 
     // Légende
