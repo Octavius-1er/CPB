@@ -623,3 +623,51 @@ div#sliding-popup {
   color: rgba(255,255,255,.8) !important;
   text-decoration: underline !important;
 }
+
+/* ── Agenda widget ─────────────────────────────────────────────── */
+.view-vue-agenda .view-empty { display: none !important; }
+.cpb-ag-ev {
+  padding: 7px 8px 7px 11px;
+  margin-bottom: 5px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e5ebe6;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: transform .15s, box-shadow .15s;
+}
+.cpb-ag-ev:hover { transform: translateX(3px); box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+.cpb-ag-date {
+  font-size: .68rem;
+  font-weight: 700;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.cpb-ag-title { font-size: .8rem; color: #1e2e1f; line-height: 1.35; }
+.cpb-ag-empty { font-size: .8rem; color: #999; font-style: italic; padding: 6px 0; }
+.cpb-ag-header {
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--g);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin: 10px 0 5px;
+}
+.cpb-ag-btn {
+  display: block;
+  width: 100%;
+  padding: 7px;
+  margin-top: 10px;
+  background: var(--g);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: .78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s;
+  text-align: center;
+}
+.cpb-ag-btn:hover { background: var(--deeper); }
