@@ -751,6 +751,84 @@ Fax. <strong>+33 (0)2 35 56 46 88</strong><br /><br /><a class="mail_basdepage" 
   })();
 </script>
 
+
+<script id="cpb-agenda-script">
+(function(){
+  /* ── Données démo (remplacé par Firestore demain) ── */
+  var EVENTS = [
+    {d:'2026-06-16',t:'Épreuves orales du Brevet (EPI)',c:'exam'},
+    {d:'2026-06-17',t:'Remise des rapports de stage',c:'info'},
+    {d:'2026-06-19',t:'Match AS Tennis - Finale académique',c:'sport'},
+    {d:'2026-06-20',t:'Sortie théâtre des Arts - 4e',c:'sortie'},
+    {d:'2026-06-22',t:'Retour séjour Grèce - 3eG & 3eH',c:'sortie'},
+    {d:'2026-06-24',t:'Cambridge Exam',c:'exam'},
+    {d:'2026-06-25',t:'Conseil de classe 3e',c:'conseil'},
+    {d:'2026-06-26',t:'Épreuves écrites du Brevet',c:'exam'},
+    {d:'2026-06-27',t:'Épreuves écrites du Brevet (J2)',c:'exam'},
+    {d:'2026-06-30',t:'Dernier jour de classe',c:'info'},
+    {d:'2026-07-04',t:'Cérémonie de remise des prix',c:'event'},
+    {d:'2026-09-01',t:'Rentrée scolaire 2026-2027',c:'info'},
+    {d:'2026-10-15',t:'Journée portes ouvertes',c:'event'},
+    {d:'2026-11-05',t:'Réunion parents-professeurs 6e/5e',c:'reunion'},
+    {d:'2026-11-12',t:'Forum des métiers - 3e',c:'event'},
+    {d:'2026-12-10',t:'Célébration de l\'Avent',c:'event'},
+  ];
+  var CATS = {exam:'#e74c3c',conseil:'#9b59b6',reunion:'#2980b9',sport:'#27ae60',sortie:'#f39c12',event:'#e67e22',info:'#7f8c8d'};
+  var JOURS=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+  var MOIS=['jan','fév','mar','avr','mai','juin','juil','août','sep','oct','nov','déc'];
+
+  function fmt(s){
+    var d=new Date(s+'T00:00:00');
+    return JOURS[d.getDay()]+'. '+d.getDate()+' '+MOIS[d.getMonth()];
+  }
+  function evHTML(ev){
+    var c=CATS[ev.c]||'#3e5f46';
+    return '<div class="cpb-ag-ev" style="border-left:3px solid '+c+'">'+
+      '<span class="cpb-ag-date">'+fmt(ev.d)+'</span>'+
+      '<span class="cpb-ag-title">'+ev.t+'</span></div>';
+  }
+
+  document.addEventListener('DOMContentLoaded',function(){
+    var block=document.querySelector('.view-vue-agenda');
+    if(!block) return;
+
+    var now=new Date(); now.setHours(0,0,0,0);
+    var dow=now.getDay();
+    var mon=new Date(now); mon.setDate(now.getDate()-(dow===0?6:dow-1));
+    var sun=new Date(mon); sun.setDate(mon.getDate()+6);
+
+    var future=EVENTS.filter(function(e){return new Date(e.d+'T00:00:00')>=now;});
+    var week  =EVENTS.filter(function(e){var d=new Date(e.d+'T00:00:00');return d>=mon&&d<=sun;});
+    var showAll=false;
+
+    function render(){
+      var html='<div class="cpb-agenda">';
+      if(!showAll){
+        html+='<div class="cpb-ag-header">Cette semaine</div>';
+        if(week.length===0) html+='<p class="cpb-ag-empty">Aucun événement cette semaine</p>';
+        else week.forEach(function(e){html+=evHTML(e);});
+      } else {
+        var cur='';
+        future.forEach(function(e){
+          var m=e.d.slice(0,7);
+          if(m!==cur){
+            var dt=new Date(e.d+'T00:00:00');
+            html+='<div class="cpb-ag-header">'+MOIS[dt.getMonth()]+' '+dt.getFullYear()+'</div>';
+            cur=m;
+          }
+          html+=evHTML(e);
+        });
+        if(future.length===0) html+='<p class="cpb-ag-empty">Aucun événement à venir</p>';
+      }
+      html+='<button class="cpb-ag-btn" id="cpb-ag-btn">'+(showAll?'↑ Réduire':'Voir tout l\'agenda ↓')+'</button>';
+      html+='</div>';
+      block.innerHTML=html;
+      document.getElementById('cpb-ag-btn').onclick=function(){showAll=!showAll;render();};
+    }
+    render();
+  });
+})();
+</script>
 </body>
 
 <!-- Mirrored from collegeprivebobee.fr/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jun 2026 18:24:07 GMT -->
