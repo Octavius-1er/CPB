@@ -820,7 +820,7 @@ Fax. <strong>+33 (0)2 35 56 46 88</strong><br /><br /><a class="mail_basdepage" 
         });
         if(future.length===0) html+='<p class="cpb-ag-empty">Aucun événement à venir</p>';
       }
-      html+='<button class="cpb-ag-btn" id="cpb-ag-btn">'+(showAll?'↑ Réduire':'Voir tout l\'agenda ↓')+'</button>';
+      html+='<a href="/agenda.html" class="cpb-ag-btn">Voir tout l\'agenda →</a>';
       html+='</div>';
       block.innerHTML=html;
       document.getElementById('cpb-ag-btn').onclick=function(){showAll=!showAll;render();};
