@@ -422,18 +422,61 @@
     return EVENTS.filter(function(e){return e.d===ds;});
   }
 
-  function showPopup(ev){
+  function closePopup(popup){
+    popup.classList.add('closing');
+    setTimeout(function(){popup.remove();},180);
+  }
+
+  function showEventPopup(ev){
     var d=new Date(ev.d+'T00:00:00');
     var fmtD=JOURS_LONG[d.getDay()]+' '+d.getDate()+' '+MOIS[d.getMonth()]+' '+d.getFullYear();
     var popup=document.createElement('div');
     popup.className='cpb-ev-popup';
     popup.innerHTML='<div class="cpb-ev-popup-box">'+
       '<button class="cpb-ev-popup-close">&times;</button>'+
+      '<div class="cpb-ev-popup-cat-dot" style="background:'+(CATS[ev.c]||'#3e5f46')+'"></div>'+
       '<div class="cpb-ev-popup-date">'+fmtD+'</div>'+
       '<div class="cpb-ev-popup-title">'+ev.t+'</div>'+
+      '<div class="cpb-ev-popup-meta">'+
+        (ev.h?'<span class="cpb-ev-popup-meta-item">🕐 '+ev.h+'</span>':'')+
+        (ev.loc?'<span class="cpb-ev-popup-meta-item">📍 '+ev.loc+'</span>':'')+
+      '</div>'+
       '</div>';
-    popup.querySelector('.cpb-ev-popup-close').onclick=function(){popup.remove();};
-    popup.onclick=function(e){if(e.target===popup)popup.remove();};
+    popup.querySelector('.cpb-ev-popup-close').onclick=function(){closePopup(popup);};
+    popup.onclick=function(e){if(e.target===popup)closePopup(popup);};
+    document.body.appendChild(popup);
+  }
+
+  function showDayPopup(y,m,d,evs){
+    var dt=new Date(y,m,d);
+    var fmtD=JOURS_LONG[dt.getDay()]+' '+d+' '+MOIS[m]+' '+y;
+    evs=evs.slice().sort(function(a,b){return (a.h||'').localeCompare(b.h||'');});
+    var rows=evs.map(function(ev,i){
+      return '<div class="cpb-day-ev" style="animation-delay:'+(i*40)+'ms" data-ev=\''+encodeURIComponent(JSON.stringify(ev))+'\'>'+
+        '<div class="cpb-day-ev-dot" style="background:'+(CATS[ev.c]||'#3e5f46')+'"></div>'+
+        '<div class="cpb-day-ev-body">'+
+          '<div class="cpb-day-ev-time">'+(ev.h||'')+'</div>'+
+          '<div class="cpb-day-ev-title">'+ev.t+'</div>'+
+          (ev.loc?'<div class="cpb-day-ev-loc">📍 '+ev.loc+'</div>':'')+
+        '</div></div>';
+    }).join('');
+    var popup=document.createElement('div');
+    popup.className='cpb-ev-popup';
+    popup.innerHTML='<div class="cpb-ev-popup-box cpb-day-popup-box">'+
+      '<button class="cpb-ev-popup-close">&times;</button>'+
+      '<div class="cpb-ev-popup-date">'+fmtD+'</div>'+
+      '<div class="cpb-day-popup-count">'+evs.length+' événement'+(evs.length>1?'s':'')+'</div>'+
+      '<div class="cpb-day-popup-list">'+rows+'</div>'+
+      '</div>';
+    popup.querySelector('.cpb-ev-popup-close').onclick=function(){closePopup(popup);};
+    popup.onclick=function(e){if(e.target===popup)closePopup(popup);};
+    popup.querySelectorAll('.cpb-day-ev').forEach(function(el){
+      el.onclick=function(){
+        var ev=JSON.parse(decodeURIComponent(this.dataset.ev));
+        closePopup(popup);
+        setTimeout(function(){showEventPopup(ev);},190);
+      };
+    });
     document.body.appendChild(popup);
   }
 
