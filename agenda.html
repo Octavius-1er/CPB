@@ -497,11 +497,11 @@
     for(var d=1;d<=daysInMonth;d++){
       var evs=eventsForDate(y,m,d);
       var isToday=(now.getFullYear()===y&&now.getMonth()===m&&now.getDate()===d);
-      var cls='cpb-cal-day'+(isToday?' today':'')+(evs.length?' has-event':'');
-      html+='<div class="'+cls+'"><div class="cpb-cal-num">'+d+'</div>';
+      var cls='cpb-cal-day'+(isToday?' today':'')+(evs.length?' has-event clickable':'');
+      html+='<div class="'+cls+'" data-y="'+y+'" data-m="'+m+'" data-d="'+d+'"><div class="cpb-cal-num">'+d+'</div>';
       evs.forEach(function(ev,idx){
-        if(idx<2) html+='<span class="cpb-cal-pill" data-ev=\''+encodeURIComponent(JSON.stringify(ev))+'\' style="background:'+( CATS[ev.c]||'#3e5f46')+'">'+ev.t+'</span>';
-        else if(idx===2) html+='<span style="font-size:.63rem;color:#888">+'+( evs.length-2)+' de plus</span>';
+        if(idx<2) html+='<span class="cpb-cal-pill" data-ev=\''+encodeURIComponent(JSON.stringify(ev))+'\' style="background:'+( CATS[ev.c]||'#3e5f46')+'">'+(ev.h?ev.h+' ':'')+ev.t+'</span>';
+        else if(idx===2) html+='<span class="cpb-cal-more">+'+( evs.length-2)+' de plus</span>';
       });
       html+='</div>';
     }
@@ -509,7 +509,16 @@
 
     // Listeners sur les pills
     grid.querySelectorAll('.cpb-cal-pill').forEach(function(el){
-      el.onclick=function(){showPopup(JSON.parse(decodeURIComponent(this.dataset.ev)));};
+      el.onclick=function(e){
+        e.stopPropagation();
+        showEventPopup(JSON.parse(decodeURIComponent(this.dataset.ev)));
+      };
+    });
+    grid.querySelectorAll('.cpb-cal-day.clickable').forEach(function(el){
+      el.onclick=function(){
+        var yy=parseInt(this.dataset.y), mm=parseInt(this.dataset.m), dd=parseInt(this.dataset.d);
+        showDayPopup(yy,mm,dd,eventsForDate(yy,mm,dd));
+      };
     });
     // Stagger animation sur chaque case
     var days=grid.querySelectorAll('.cpb-cal-day:not(.empty)');
