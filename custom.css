@@ -71,12 +71,30 @@ a { transition: color var(--dur) var(--ease); }
   padding: 8px 20px !important;
 }
 
-#block-blocpourtelephoneetemail .field__item {
+/* ── Barre contact : flex chaîné sur tous les parents ────────── */
+.region-secondary-menu {
   display: flex !important;
   align-items: center !important;
-  gap: 20px !important;
-  flex-wrap: wrap !important;
+  width: 100% !important;
 }
+#block-blocpourtelephoneetemail {
+  width: 100% !important;
+  flex: 1 !important;
+}
+#block-blocpourtelephoneetemail .content { width: 100% !important; }
+#block-blocpourtelephoneetemail .field,
+#block-blocpourtelephoneetemail .field__item {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: nowrap !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+#ensemble_email, #ensemble_telephone { flex: 0 0 auto !important; }
+#ensemble_preinscription { flex: 0 0 auto !important; margin-left: auto !important; }
 
 /* Pills arrondis : uniquement sur le <p> intérieur, pas sur le div */
 #ensemble_email,
