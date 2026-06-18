@@ -739,6 +739,50 @@ Fax. <strong>+33 (0)2 35 56 46 88</strong><br /><br /><a class="mail_basdepage" 
   })();
 })();
 </script>
+<style>
+.paragraph--type--drapeau {
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+  border-radius: 12px;
+  padding: 12px;
+  text-decoration: none;
+  display: block;
+}
+.paragraph--type--drapeau:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(62,95,70,.15);
+  background: #f0f5f1;
+}
+.paragraph--type--drapeau::after {
+  content: 'En savoir plus →';
+  display: block;
+  font-size: .75rem;
+  color: var(--g);
+  font-weight: 600;
+  margin-top: 8px;
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var LINKS = {
+    'drapeau_anglais':  '/page-drapeau/langues/anglais.html',
+    'drapeau_allemand': '/page-drapeau/langues/allemand.html',
+    'drapeau_espagnol': '/page-drapeau/langues/espagnol.html',
+    'drapeau_chinois':  '/page-drapeau/langues/chinois.html',
+    'latin':            '/page-drapeau/langues/latin.html',
+  };
+  document.querySelectorAll('.paragraph--type--drapeau').forEach(function(card){
+    var img = card.querySelector('img');
+    if(!img) return;
+    var src = img.getAttribute('src') || '';
+    var key = Object.keys(LINKS).find(function(k){ return src.indexOf(k) !== -1; });
+    if(key){
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', function(){ window.location.href = LINKS[key]; });
+    }
+  });
+});
+</script>
 </body>
 
 <!-- Mirrored from collegeprivebobee.fr/page-drapeau/langues-et-latin by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Jun 2026 18:24:49 GMT -->
