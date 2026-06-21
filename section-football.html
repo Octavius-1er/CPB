@@ -372,24 +372,46 @@
     transition:background .15s;
   }
   .cpb-sb-copy-btn:hover{background:var(--g,#3e5f46);color:white;}
+  .cpb-sb-zoomable{cursor:zoom-in;transition:opacity .15s}
+  .cpb-sb-zoomable:hover{opacity:.85}
+  .cpb-zoom-overlay{
+    position:fixed;inset:0;background:rgba(10,15,11,.88);z-index:9999;
+    display:flex;align-items:center;justify-content:center;padding:30px;
+    animation:cpb-zoomFade .2s ease both;cursor:zoom-out;
+  }
+  .cpb-zoom-overlay.closing{animation:cpb-zoomFadeOut .15s ease both}
+  @keyframes cpb-zoomFade{from{opacity:0}to{opacity:1}}
+  @keyframes cpb-zoomFadeOut{from{opacity:1}to{opacity:0}}
+  .cpb-zoom-overlay img{
+    max-width:92vw;max-height:88vh;border-radius:10px;
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+    animation:cpb-zoomScale .25s cubic-bezier(.34,1.56,.64,1) both;
+  }
+  @keyframes cpb-zoomScale{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+  .cpb-zoom-close{
+    position:fixed;top:18px;right:22px;background:rgba(255,255,255,.12);
+    border:none;color:white;font-size:1.6rem;width:42px;height:42px;border-radius:50%;
+    cursor:pointer;transition:background .15s;display:flex;align-items:center;justify-content:center;
+  }
+  .cpb-zoom-close:hover{background:rgba(255,255,255,.25)}
   </style>
   <div class="cpb-sb-h2">📣 Actu de la section</div>
   <div class="cpb-sb-card">
-    <img src="/sites/default/files/2025-11/remises-tenues-foot.jpg" alt="Remise des tenues"/>
+    <img src="/sites/default/files/2025-11/remises-tenues-foot.jpg" alt="Remise des tenues" class="cpb-sb-zoomable"/>
     <div class="cpb-sb-card-body">
       <div class="cpb-sb-date">Nov. 2025</div>
       <div class="cpb-sb-card-title">Remise des nouvelles tenues à la section football</div>
     </div>
   </div>
   <div class="cpb-sb-card">
-    <img src="/sites/default/files/2025-10/journee-integration-section-scolaire-football.jpg" alt="Journée d'intégration"/>
+    <img src="/sites/default/files/2025-10/journee-integration-section-scolaire-football.jpg" alt="Journée d'intégration" class="cpb-sb-zoomable"/>
     <div class="cpb-sb-card-body">
       <div class="cpb-sb-date">Oct. 2025</div>
       <div class="cpb-sb-card-title">Journée d'intégration de la section football</div>
     </div>
   </div>
   <div class="cpb-sb-card">
-    <img src="/sites/default/files/2024-05/football-5A-5C-college-bobee-1.jpg" alt="Entraînement 5A-5C"/>
+    <img src="/sites/default/files/2024-05/football-5A-5C-college-bobee-1.jpg" alt="Entraînement 5A-5C" class="cpb-sb-zoomable"/>
     <div class="cpb-sb-card-body">
       <div class="cpb-sb-date">Mai 2024</div>
       <div class="cpb-sb-card-title">Séance d'entraînement des classes 5eA et 5eC</div>
@@ -713,6 +735,23 @@ Fax. <strong>+33 (0)2 35 56 46 88</strong><br /><br /><a class="mail_basdepage" 
     window.addEventListener('scroll', check, {passive:true});
     check();
   })();
+</script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  function openZoom(src,alt){
+    var ov=document.createElement('div');
+    ov.className='cpb-zoom-overlay';
+    ov.innerHTML='<button class="cpb-zoom-close">&times;</button><img src="'+src+'" alt="'+(alt||'')+'"/>';
+    function close(){ov.classList.add('closing');setTimeout(function(){ov.remove();},150);}
+    ov.onclick=function(e){if(e.target===ov)close();};
+    ov.querySelector('.cpb-zoom-close').onclick=close;
+    document.addEventListener('keydown',function esc(e){if(e.key==='Escape'){close();document.removeEventListener('keydown',esc);}});
+    document.body.appendChild(ov);
+  }
+  document.querySelectorAll('.cpb-sb-zoomable').forEach(function(img){
+    img.addEventListener('click',function(){openZoom(this.src,this.alt);});
+  });
+});
 </script>
 </body>
 
