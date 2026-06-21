@@ -357,6 +357,21 @@
     font-size:.72rem;font-weight:600;padding:5px 12px;border-radius:20px;text-decoration:none;
   }
   .cpb-sb-contribute-btn:hover{background:var(--deeper,#2a4233)}
+  .cpb-sb-mail-row{
+    display:flex;align-items:center;gap:6px;margin:8px 0;
+    background:white;border:1px solid #d8e2dc;border-radius:8px;
+    padding:6px 8px;
+  }
+  .cpb-sb-mail-text{
+    flex:1;font-size:.72rem;color:#3a4a3d;font-family:var(--font-mono,monospace);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;user-select:all;
+  }
+  .cpb-sb-copy-btn{
+    flex-shrink:0;background:#e8f0ea;color:var(--g,#3e5f46);border:none;
+    font-size:.66rem;font-weight:600;padding:4px 9px;border-radius:6px;cursor:pointer;
+    transition:background .15s;
+  }
+  .cpb-sb-copy-btn:hover{background:var(--g,#3e5f46);color:white;}
   </style>
   <div class="cpb-sb-h2">📣 Actu de la section</div>
   <div class="cpb-sb-card">
@@ -383,8 +398,11 @@
   <div class="cpb-sb-contribute">
     <b>📧 Prof responsable ?</b>
     Envoyez vos photos et actus, on les ajoute ici.
-    <br/>
-    <a href="mailto:contact@collegeprivebobee.fr?subject=Actualité%20section%20Football" class="cpb-sb-contribute-btn">Envoyer une actu →</a>
+    <div class="cpb-sb-mail-row">
+      <span class="cpb-sb-mail-text" id="cpb-sb-mail-football">contact@collegeprivebobee.fr</span>
+      <button class="cpb-sb-copy-btn" onclick="navigator.clipboard.writeText('contact@collegeprivebobee.fr');this.textContent='✓ Copié';setTimeout(()=>this.textContent='Copier',1500);">Copier</button>
+    </div>
+    <a href="mailto:contact@collegeprivebobee.fr?subject=Actualité%20section%20Football" class="cpb-sb-contribute-btn">✉️ Envoyer une actu</a>
   </div>
 </div>
 
