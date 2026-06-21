@@ -325,73 +325,6 @@
       
   </div>
 </article>
-<div class="cpb-section-blog">
-  <style>
-  .cpb-section-blog{margin:36px 0 8px;animation:cpb-fadeUp .5s ease both}
-  @keyframes cpb-fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-  .cpb-sb-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:18px;border-bottom:2px solid #e8f0ea;padding-bottom:10px}
-  .cpb-sb-title{font-size:1.05rem;color:var(--gd,#a8841f);font-weight:700;margin:0}
-  .cpb-sb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-  .cpb-sb-card{background:white;border:1px solid #e5ebe6;border-radius:14px;overflow:hidden;transition:transform .2s,box-shadow .2s;animation:cpb-fadeUp .4s ease both}
-  .cpb-sb-card:nth-child(2){animation-delay:.08s}
-  .cpb-sb-card:nth-child(3){animation-delay:.16s}
-  .cpb-sb-card:hover{transform:translateY(-4px);box-shadow:0 10px 26px rgba(0,0,0,.08)}
-  .cpb-sb-card img{width:100%;height:140px;object-fit:cover;display:block}
-  .cpb-sb-card-body{padding:12px 14px}
-  .cpb-sb-date{font-size:.68rem;color:#888;text-transform:uppercase;letter-spacing:.04em;font-weight:700}
-  .cpb-sb-card-title{font-size:.88rem;color:#1e2e1f;font-weight:600;margin:4px 0 0;line-height:1.35}
-  .cpb-sb-contribute{
-    margin-top:20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
-    background:#f0f5f1;border:1px dashed #b9cdbd;border-radius:14px;padding:16px 18px;
-  }
-  .cpb-sb-contribute-icon{font-size:1.6rem;flex-shrink:0}
-  .cpb-sb-contribute-text{flex:1;min-width:200px;font-size:.82rem;color:#3a4a3d;line-height:1.5}
-  .cpb-sb-contribute-text b{color:#1e2e1f}
-  .cpb-sb-contribute-btn{
-    display:inline-block;background:var(--g,#3e5f46);color:white;font-size:.8rem;font-weight:600;
-    padding:8px 16px;border-radius:30px;text-decoration:none;white-space:nowrap;transition:background .2s;
-  }
-  .cpb-sb-contribute-btn:hover{background:var(--deeper,#2a4233)}
-  @media(max-width:600px){.cpb-sb-grid{grid-template-columns:1fr}}
-  </style>
-
-  <div class="cpb-sb-head">
-    <h2 class="cpb-sb-title">📣 Actualités de la section Football</h2>
-  </div>
-
-  <div class="cpb-sb-grid">
-    <div class="cpb-sb-card">
-      <img src="/sites/default/files/styles/visuel_actualite_accueil/public/2018-07/section_foot_1260x400px.jpg" alt="Entraînement section football"/>
-      <div class="cpb-sb-card-body">
-        <div class="cpb-sb-date">12 juin 2026</div>
-        <div class="cpb-sb-card-title">Victoire 3-1 face à Saint-Joseph en match amical</div>
-      </div>
-    </div>
-    <div class="cpb-sb-card">
-      <img src="/sites/default/files/styles/visuel_actualite_accueil/public/2018-07/section_foot_1260x400px.jpg" alt="Entraînement HAC"/>
-      <div class="cpb-sb-card-body">
-        <div class="cpb-sb-date">28 mai 2026</div>
-        <div class="cpb-sb-card-title">Séance d'entraînement encadrée par un coach du HAC</div>
-      </div>
-    </div>
-    <div class="cpb-sb-card">
-      <img src="/sites/default/files/styles/visuel_actualite_accueil/public/2018-07/section_foot_1260x400px.jpg" alt="Tournoi inter-classes"/>
-      <div class="cpb-sb-card-body">
-        <div class="cpb-sb-date">14 mai 2026</div>
-        <div class="cpb-sb-card-title">Tournoi inter-classes : la 5eC remporte la coupe</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cpb-sb-contribute">
-    <div class="cpb-sb-contribute-icon">📧</div>
-    <div class="cpb-sb-contribute-text">
-      <b>Professeur responsable de cette section ?</b><br/>
-      Envoyez vos photos et actualités par email, on les ajoute ici.
-    </div>
-    <a href="mailto:contact@collegeprivebobee.fr?subject=Actualité%20section%20Football" class="cpb-sb-contribute-btn">Envoyer une actu →</a>
-  </div>
-</div>
 
     </div>
   </div>
@@ -403,6 +336,58 @@
                           <div id="sidebar-second" class="column sidebar">
             <aside class="section" role="complementary">
                 <div class="region region-sidebar-second">
+    <div id="block-cpb-section-blog" class="block cpb-sb-block">
+  <style>
+  .cpb-sb-block{background:white;border:1px solid #e5ebe6;border-radius:var(--r-lg,14px);padding:16px;margin-bottom:16px;animation:cpb-fadeUp .5s ease both}
+  @keyframes cpb-fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .cpb-sb-h2{font-size:.78rem;font-weight:700;color:var(--gd,#a8841f);text-transform:uppercase;letter-spacing:.04em;margin:0 0 12px;display:flex;align-items:center;gap:6px}
+  .cpb-sb-card{display:flex;gap:10px;margin-bottom:10px;border-radius:10px;overflow:hidden;transition:transform .15s}
+  .cpb-sb-card:hover{transform:translateX(3px)}
+  .cpb-sb-card img{width:64px;height:50px;object-fit:cover;border-radius:8px;flex-shrink:0}
+  .cpb-sb-card-body{min-width:0}
+  .cpb-sb-date{font-size:.62rem;color:#999;text-transform:uppercase;font-weight:700;letter-spacing:.03em}
+  .cpb-sb-card-title{font-size:.76rem;color:#1e2e1f;font-weight:600;line-height:1.3;margin-top:1px}
+  .cpb-sb-contribute{
+    margin-top:12px;padding:11px 12px;background:#f0f5f1;border:1px dashed #b9cdbd;
+    border-radius:10px;font-size:.72rem;color:#3a4a3d;line-height:1.5;
+  }
+  .cpb-sb-contribute b{color:#1e2e1f;display:block;margin-bottom:4px}
+  .cpb-sb-contribute-btn{
+    display:inline-block;margin-top:7px;background:var(--g,#3e5f46);color:white;
+    font-size:.72rem;font-weight:600;padding:5px 12px;border-radius:20px;text-decoration:none;
+  }
+  .cpb-sb-contribute-btn:hover{background:var(--deeper,#2a4233)}
+  </style>
+  <div class="cpb-sb-h2">📣 Actu de la section</div>
+  <div class="cpb-sb-card">
+    <img src="/sites/default/files/styles/visuel_actualite_accueil/public/2018-07/section_foot_1260x400px.jpg" alt=""/>
+    <div class="cpb-sb-card-body">
+      <div class="cpb-sb-date">12 juin 2026</div>
+      <div class="cpb-sb-card-title">Victoire 3-1 face à Saint-Joseph</div>
+    </div>
+  </div>
+  <div class="cpb-sb-card">
+    <img src="/sites/default/files/styles/visuel_actualite_accueil/public/2018-07/section_foot_1260x400px.jpg" alt=""/>
+    <div class="cpb-sb-card-body">
+      <div class="cpb-sb-date">28 mai 2026</div>
+      <div class="cpb-sb-card-title">Entraînement encadré par un coach du HAC</div>
+    </div>
+  </div>
+  <div class="cpb-sb-card">
+    <img src="/sites/default/files/styles/visuel_actualite_accueil/public/2018-07/section_foot_1260x400px.jpg" alt=""/>
+    <div class="cpb-sb-card-body">
+      <div class="cpb-sb-date">14 mai 2026</div>
+      <div class="cpb-sb-card-title">Tournoi inter-classes : victoire de la 5eC</div>
+    </div>
+  </div>
+  <div class="cpb-sb-contribute">
+    <b>📧 Prof responsable ?</b>
+    Envoyez vos photos et actus, on les ajoute ici.
+    <br/>
+    <a href="mailto:contact@collegeprivebobee.fr?subject=Actualité%20section%20Football" class="cpb-sb-contribute-btn">Envoyer une actu →</a>
+  </div>
+</div>
+
     <div class="views-element-container block block-views block-views-blockvue-agenda-block-1" id="block-views-block-vue-agenda-block-1">
   
       <h2>Agenda</h2>
